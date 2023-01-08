@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
+using System.Diagnostics;
+using System.Threading;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows;
+using System.Windows.Input;
 
 namespace launcher
 {
@@ -20,9 +12,27 @@ namespace launcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        string rift_binarypath = string.Empty; //load this from app.settings later
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void lbl_play_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (rift_binarypath != string.Empty)
+            {
+                Process.Start(rift_binarypath);
+            }
+            else 
+            {
+                MessageBox.Show("Startup FAIL!\nCause: RIFT binary path not found.", "RIFT launcher error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void lbl_play_MouseEnter(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }

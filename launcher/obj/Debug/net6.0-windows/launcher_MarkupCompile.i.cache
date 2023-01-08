@@ -4,14 +4,14 @@
 winexe
 C#
 .cs
-C:\Users\ogor\source\repos\launcher\launcher\obj\Debug\net6.0-windows\
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\
 launcher
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\ogor\source\repos\launcher\launcher\App.xaml
+C:\Users\ogor\Documents\GitHub\launcher\launcher\App.xaml
 11407045341
-
+1585937921
 5458016813
 194-1797456590
 MainWindow.xaml;

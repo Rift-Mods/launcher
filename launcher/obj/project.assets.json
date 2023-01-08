@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ogor\\source\\repos\\launcher\\launcher\\launcher.csproj",
+      "projectUniqueName": "C:\\Users\\ogor\\Documents\\GitHub\\launcher\\launcher\\launcher.csproj",
       "projectName": "launcher",
-      "projectPath": "C:\\Users\\ogor\\source\\repos\\launcher\\launcher\\launcher.csproj",
+      "projectPath": "C:\\Users\\ogor\\Documents\\GitHub\\launcher\\launcher\\launcher.csproj",
       "packagesPath": "C:\\Users\\ogor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ogor\\source\\repos\\launcher\\launcher\\obj\\",
+      "outputPath": "C:\\Users\\ogor\\Documents\\GitHub\\launcher\\launcher\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ogor\\AppData\\Roaming\\NuGet\\NuGet.Config",

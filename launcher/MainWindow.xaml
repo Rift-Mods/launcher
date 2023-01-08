@@ -5,8 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:launcher"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black">
     <Grid>
+        <Image Margin="10,0,0,10" Source="/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
+        <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="100,376,0,32" Background="DarkGray" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter">
+            <Label.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Label.Resources>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Label.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
+        <Label Content="MODS" HorizontalAlignment="Left" Margin="160,376,0,32" Background="Black" Foreground="White" FontFamily="Segoe UI Light">
+            <Label.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Label.Resources>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Label.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
+        <Label Content="LEADERBOARD" HorizontalAlignment="Left" Margin="220,376,0,32" Background="Black" Foreground="White" FontFamily="Segoe UI Light">
+            <Label.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Label.Resources>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Label.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
+        <Label Content="RIFT art goes here...&#xD;&#xA;" HorizontalAlignment="Left" Margin="160,165,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="SETTINGS" HorizontalAlignment="Left" Margin="323,376,0,32" Background="Black" Foreground="White" FontFamily="Segoe UI Light">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Label.Resources>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Label.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Label.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
 
     </Grid>
 </Window>
