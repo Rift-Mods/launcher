@@ -55,10 +55,6 @@ namespace launcher
             buttonsEnabled[count] = true;
             ClearButtons();
             lbl.Background = new SolidColorBrush(Colors.DarkGray);
-            foreach (bool a in buttonsEnabled)
-            {
-                Debug.WriteLine(a + "\n");
-            }
         }
 
         private void lbl_play_MouseDown(object sender, MouseButtonEventArgs e)
