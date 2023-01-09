@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
-using System.Windows.Media;
-using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace launcher
@@ -59,7 +55,6 @@ namespace launcher
 
         private void lbl_play_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
             SetActive(0, lbl_play);
             /*if (rift_binarypath != string.Empty)
             {
