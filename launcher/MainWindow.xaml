@@ -5,125 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:launcher"
         mc:Ignorable="d"
-        Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black">
-    <Grid>
+        Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black" Loaded="Window_Loaded">
+    <Grid Width="725">
         <Image Margin="10,0,0,10" Source="/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
-        <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="100,376,0,32" Background="DarkGray" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter">
+        <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="99,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter" MouseLeave="lbl_play_MouseLeave">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
+                <Storyboard x:Key="lbl_play_mouseEnter" Storyboard.TargetName="lbl_play" RepeatBehavior="0">
+                    <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
+                <Storyboard x:Key="lbl_play_mouseLeave" Storyboard.TargetName="lbl_play">
+                    <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
             </Label.Resources>
-            <Label.Triggers>
-                <EventTrigger RoutedEvent="Label.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="DarkGray" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Label.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="Black" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Label.Triggers>
         </Label>
-        <Label Content="MODS" HorizontalAlignment="Left" Margin="160,376,0,32" Background="Black" Foreground="White" FontFamily="Segoe UI Light">
+        <Label x:Name="lbl_mods" Content="MODS" HorizontalAlignment="Left" Margin="160,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_mods_MouseDown" MouseEnter="lbl_mods_MouseEnter" MouseLeave="lbl_mods_MouseLeave">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
+                <Storyboard x:Key="lbl_mods_mouseEnter" Storyboard.TargetName="lbl_mods">
+                    <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
+                <Storyboard x:Key="lbl_mods_mouseLeave" Storyboard.TargetName="lbl_mods">
+                    <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
             </Label.Resources>
-            <Label.Triggers>
-                <EventTrigger RoutedEvent="Label.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="DarkGray" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Label.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="Black" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Label.Triggers>
         </Label>
-        <Label Content="LEADERBOARD" HorizontalAlignment="Left" Margin="220,376,0,32" Background="Black" Foreground="White" FontFamily="Segoe UI Light">
+        <Label x:Name="lbl_leaderboard" Content="LEADERBOARD" HorizontalAlignment="Left" Margin="223,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_leaderboard_MouseDown" MouseEnter="lbl_leaderboard_MouseEnter" MouseLeave="lbl_leaderboard_MouseLeave">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
+                <Storyboard x:Key="lbl_leaderboard_mouseEnter" Storyboard.TargetName="lbl_leaderboard">
+                    <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
+                <Storyboard x:Key="lbl_leaderboard_mouseLeave" Storyboard.TargetName="lbl_leaderboard">
+                    <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
             </Label.Resources>
-            <Label.Triggers>
-                <EventTrigger RoutedEvent="Label.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="DarkGray" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Label.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="Black" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Label.Triggers>
         </Label>
-        <Label Content="RIFT art goes here...&#xD;&#xA;" HorizontalAlignment="Left" Margin="160,165,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label Content="SETTINGS" HorizontalAlignment="Left" Margin="323,376,0,32" Background="Black" Foreground="White" FontFamily="Segoe UI Light">
+        <Label Content="RIFT art goes here...&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        <Label x:Name="lbl_settings" Content="SETTINGS" HorizontalAlignment="Left" Margin="323,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_settings_MouseDown" MouseLeave="lbl_settings_MouseLeave" MouseEnter="lbl_settings_MouseEnter">
             <Label.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
+                <Storyboard x:Key="lbl_settings_mouseEnter" Storyboard.TargetName="lbl_settings">
+                    <ColorAnimation To="DarkGray" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
+                <Storyboard x:Key="lbl_settings_mouseLeave" Storyboard.TargetName="lbl_settings">
+                    <ColorAnimation To="Black" 
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
+                                    FillBehavior="Stop" 
+                                    Duration="0:0:0:1"/>
+                </Storyboard>
             </Label.Resources>
-            <Label.Triggers>
-                <EventTrigger RoutedEvent="Label.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="DarkGray" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Label.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation To="Black" 
-                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
-                                    FillBehavior="Stop" 
-                                    Duration="0:0:0:1"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Label.Triggers>
         </Label>
 
     </Grid>
