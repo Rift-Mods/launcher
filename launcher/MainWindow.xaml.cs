@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -19,6 +20,12 @@ namespace launcher
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (File.ReadAllText(@"Launcher\cfg\fts.cfg") != "FN")
+            {
+                this.Visibility = Visibility.Hidden;
+                FTS fts = new FTS();
+                fts.Show();
+            }
             buttonsEnabled[0] = true; //enable play button as default
         }
         #region Buttons

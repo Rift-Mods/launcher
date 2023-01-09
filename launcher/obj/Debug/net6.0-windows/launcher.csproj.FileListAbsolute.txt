@@ -21,3 +21,7 @@ C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\refint
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher.pdb
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher.genruntimeconfig.cache
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\ref\launcher.dll
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.g.cs
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.baml
+C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher.csproj.CopyComplete

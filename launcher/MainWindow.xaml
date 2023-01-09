@@ -85,6 +85,7 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
+        <Image Margin="104,0,104,0" Source="/ltt onlyfans.png" Stretch="Fill" Height="340" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
