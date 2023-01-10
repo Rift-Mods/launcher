@@ -25,3 +25,4 @@ C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.g.
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.baml
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher.csproj.CopyComplete
+C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\ltt onlyfans.png

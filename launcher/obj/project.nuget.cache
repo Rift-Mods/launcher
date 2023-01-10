@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Qy57zlIA+G0FSxMstKRrOAKvM7bxQ+eH2eX0TPKjBkOvJ1A0Yuiiw5dVCmpb0KaahuD75XpxR22lwTtqHCQp/g==",
+  "dgSpecHash": "CQqweWtHl3iUHuTKcgTZ6/Q6+vlhE7Bz4C90ickVC55uwhG1Ulc2IHd1exb0CPtSp5tILRuMaZZqHMXtXWEz9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\ogor\\Documents\\GitHub\\launcher\\launcher\\launcher.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ogor\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+    "C:\\Users\\ogor\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\ogor\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\ogor\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\ogor\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\ogor\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.13\\microsoft.netcore.app.host.win-x64.6.0.13.nupkg.sha512"
   ],
   "logs": []
 }

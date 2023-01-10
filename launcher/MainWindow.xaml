@@ -85,7 +85,19 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
-        <Image Margin="104,0,104,0" Source="/ltt onlyfans.png" Stretch="Fill" Height="340" VerticalAlignment="Top"/>
+        <Image Margin="10,0,10,0" Source="/ltt onlyfans.png" Stretch="Fill" Height="340" VerticalAlignment="Top" x:Name="RiftArt" Opacity="0.98">
+            <Image.Effect>
+                <BlurEffect x:Name="blur" KernelType="Gaussian" Radius="0"></BlurEffect>
+            </Image.Effect>
+            <Image.Resources>
+                <Storyboard x:Key="blurSB">
+                    <DoubleAnimation From="0" To="50" Duration="00:00:00.50"
+                                     Storyboard.TargetName="blur"
+                                     Storyboard.TargetProperty="Radius"
+                                     ></DoubleAnimation>
+                </Storyboard>
+            </Image.Resources>
+        </Image>
 
     </Grid>
 </Window>

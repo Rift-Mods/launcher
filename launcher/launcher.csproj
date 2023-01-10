@@ -8,10 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ltt onlyfans.png" />
     <None Remove="RiftClear2.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="ltt onlyfans.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="RiftClear2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -20,13 +21,16 @@ namespace launcher
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (File.ReadAllText(@"Launcher\cfg\fts.cfg") != "FN")
+            if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN")
+            {
+                buttonsEnabled[0] = true; //enable play button as default
+            }
+            else 
             {
                 this.Visibility = Visibility.Hidden;
                 FTS fts = new FTS();
                 fts.Show();
             }
-            buttonsEnabled[0] = true; //enable play button as default
         }
         #region Buttons
         private void ClearButtons()
@@ -52,6 +56,11 @@ namespace launcher
                 lbl_settings.Background = new SolidColorBrush(Colors.Black);
             }
         }
+        private void DoAnim()
+        {
+            Storyboard anim = (Storyboard)RiftArt.FindResource("blurSB");
+            anim.Begin();
+        }
         private void SetActive(int count, Label lbl)
         {
             buttonsEnabled = new bool[4];
@@ -75,6 +84,7 @@ namespace launcher
         private void lbl_mods_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(1, lbl_mods);
+            DoAnim();
             //mods
         }
 

@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ltt%20onlyfans.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("riftclear2.png")]
 
 
