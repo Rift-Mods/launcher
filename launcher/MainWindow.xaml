@@ -13,7 +13,7 @@
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
-                <Storyboard x:Key="lbl_play_mouseEnter" Storyboard.TargetName="lbl_play" RepeatBehavior="0">
+                <Storyboard x:Key="lbl_play_mouseEnter" Storyboard.TargetName="lbl_play">
                     <ColorAnimation To="DarkGray" 
                                     Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" 
                                     FillBehavior="Stop" 
@@ -91,13 +91,50 @@
             </Image.Effect>
             <Image.Resources>
                 <Storyboard x:Key="blurSB">
-                    <DoubleAnimation From="0" To="50" Duration="00:00:00.50"
+                    <DoubleAnimation From="0" To="50" Duration="00:00:00.30"
+                                     Storyboard.TargetName="blur"
+                                     Storyboard.TargetProperty="Radius"
+                                     ></DoubleAnimation>
+                </Storyboard>
+                <Storyboard x:Key="unblurSB">
+                    <DoubleAnimation From="50" To="0" Duration="00:00:00.30"
                                      Storyboard.TargetName="blur"
                                      Storyboard.TargetProperty="Radius"
                                      ></DoubleAnimation>
                 </Storyboard>
             </Image.Resources>
         </Image>
-
+        <Label Content="Mods" HorizontalAlignment="Left" Margin="328,10,0,389" Foreground="White" Background="{x:Null}" Width="55" FontSize="16"/>
+        <ListBox  Margin="29,50,29,154" Background="#7F000000" Foreground="White">
+            <ListBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="230,287,0,0" VerticalAlignment="Top" Height="36" Width="84" Background="#7F252525" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="REMOVE" HorizontalAlignment="Center" Margin="0,287,0,0" VerticalAlignment="Top" Height="36" Width="86" Background="#7F000000" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="REMOVE ALL" HorizontalAlignment="Left" Margin="410,287,0,0" VerticalAlignment="Top" Height="36" Width="86" Foreground="Red" FontSize="12" Background="#99000000">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="+ Mods" HorizontalAlignment="Left" Margin="52,388,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="8" Opacity="0"/>
+        <ProgressBar Height="10" Margin="615,414,10,0" VerticalAlignment="Top" Foreground="DeepSkyBlue" Maximum="10"/>
+        <Label x:Name="modProgressLabel" Content="" HorizontalAlignment="Left" Margin="11,406,0,0" VerticalAlignment="Top" Width="600" HorizontalContentAlignment="Right" Foreground="White"></Label>
     </Grid>
 </Window>

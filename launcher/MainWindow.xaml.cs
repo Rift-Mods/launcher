@@ -1,10 +1,14 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using static launcher.CommonClass;
 
 namespace launcher
 {
@@ -17,7 +21,18 @@ namespace launcher
         string rift_binarypath = string.Empty; //load this from app.settings later
         public MainWindow()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = "/c dotnet tool install ilspycmd -g";
+                process.StartInfo = startInfo;
+                process.Start();
+            }
+            catch { }
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -31,6 +46,7 @@ namespace launcher
                 FTS fts = new FTS();
                 fts.Show();
             }
+
         }
         #region Buttons
         private void ClearButtons()
@@ -56,10 +72,15 @@ namespace launcher
                 lbl_settings.Background = new SolidColorBrush(Colors.Black);
             }
         }
+        bool animDone = false;
         private void DoAnim()
         {
-            Storyboard anim = (Storyboard)RiftArt.FindResource("blurSB");
-            anim.Begin();
+            if (animDone != true)
+            {
+                Storyboard anim = (Storyboard)RiftArt.FindResource("blurSB");
+                anim.Begin();
+                animDone = true;
+            }
         }
         private void SetActive(int count, Label lbl)
         {
@@ -72,14 +93,24 @@ namespace launcher
         private void lbl_play_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(0, lbl_play);
-            /*if (rift_binarypath != string.Empty)
+            Storyboard anim = (Storyboard)RiftArt.FindResource("unblurSB");
+            anim.Begin();
+            animDone = false;
+            try
             {
-                Process.Start(rift_binarypath);
+                if (rift_binarypath != string.Empty)
+                {
+                    System.Diagnostics.Process.Start(rift_binarypath);
+                }
+                else
+                {
+                    MessageBox.Show("Startup FAIL!\nCause: RIFT binary path not found.", "RIFT launcher error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else 
+            catch(Exception ex)
             {
-                MessageBox.Show("Startup FAIL!\nCause: RIFT binary path not found.", "RIFT launcher error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }*/
+                MessageBox.Show("Startup FAIL!\nCause: " + ex + ", RIFT binary path not found or startup failed for some other reason.", "RIFT launcher error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         private void lbl_mods_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -91,12 +122,14 @@ namespace launcher
         private void lbl_leaderboard_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(2, lbl_leaderboard);
+            DoAnim();
             //leaderboard
         }
 
         private void lbl_settings_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(3, lbl_settings);
+            DoAnim();
             //settings
         }
         private void BoardStart(string Board, Label lbl)
@@ -171,7 +204,23 @@ namespace launcher
 
 
         #endregion
-
-
+        #region Scenes
+        private void SetScene(string Scene)
+        {
+            switch(Scene)
+            {
+                case "mods":
+                    //animate mods
+                    break;
+                case "leaderboard":
+                    //lb
+                    break;
+                case "settings":
+                //settings
+                case "launcher":
+                    break;
+            }
+        }
+        #endregion
     }
 }

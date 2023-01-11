@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
-using Newtonsoft.Json;
+using static launcher.CommonClass;
 namespace launcher
 {
     /// <summary>
@@ -39,22 +39,25 @@ namespace launcher
             if (DotnetCheck())
             {
                 progress_label.Content = "Finishing up...";
+                hasDotNet = true;
             }
             else
             {
                 progress_label.Content = "Downloading .NET...";
                 DownloadDotnet();
+                process.WaitForExit();
             }
             CheckCompletion();
 
         }
         int i = 0;
+        bool hasDotNet = false;
         private async void CheckCompletion()
         {
             var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(1));
             while (await periodicTimer.WaitForNextTickAsync())
             {
-                    if (dnC)
+                    if (hasDotNet)
                     {
                         progress_bar.Value = 85;
                         i++;
@@ -65,19 +68,21 @@ namespace launcher
                         i++;
                         CheckCompletion();
                     }
-                if (dnC && i == 1)
+                if (hasDotNet && i == 1)
                 {
                     System.Diagnostics.Process process = new System.Diagnostics.Process();
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                     startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                     startInfo.FileName = "cmd.exe";
-                    startInfo.Arguments = "/k dotnet tool install ilspycmd -g";
+                    startInfo.Arguments = "/C dotnet tool install ilspycmd -g";
                     process.StartInfo = startInfo;
                     process.Start();
                     progress_bar.Value = 100;
                     progress_label.Content = "We're done here!";
                     File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
                     File.AppendAllText(@"Launcher\Log.log", "FTS DONE!!!" + Environment.NewLine);
+                    File.Delete("dotnet.exe");
+                    MessageBox.Show("Hey there and thanks for downloading the launcher! We've been hard at work to make it work, so if you encounter any bugs feel free to reach out on: \nDiscord: BotchedRPR#1282\nGitHub: BotchedRPR\nWe hope that you enjoy using the launcher. Don't forget to copy your RIFT game files to the now created Launcher/RIFT folder.\nOnce again thanks for downloading, and we hope you'll enjoy using it!\n -BotchedRPR and Nikkuss");
                     MainWindow mw = new MainWindow();
                     mw.Show();
                     this.Hide();
@@ -86,13 +91,12 @@ namespace launcher
                 }
                 }          
         }
-
+        System.Diagnostics.Process process = new System.Diagnostics.Process();
 
         private bool DownloadDotnet()
         {
             client = new WebClient();
             client.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/6ba69569-ee5e-460e-afd8-79ae3cd4617b/16a385a4fab2c5806f50f49f5581b4fd/dotnet-sdk-7.0.102-win-x64.exe", "dotnet.exe");
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "dotnet.exe";
@@ -102,6 +106,7 @@ namespace launcher
 
             progress_label.Content = "DON'T PANIC IF IT LOOKS STUCK. Installing .NET";
             File.AppendAllText(@"Launcher\Log.log", ".NET install going" + Environment.NewLine);
+            hasDotNet = true;
             System.Threading.Thread.Sleep(5000);
             return true;
         }
@@ -117,11 +122,7 @@ namespace launcher
         }
         private void SerializeDB()
         {
-            ModDB moddb = new ModDB();
-            moddb.InstalledMods = new string[] { "JSON test" };
-            string output = JsonConvert.SerializeObject(moddb);
-            output = CreateMD5(output) + output;
-            File.AppendAllText(@"Launcher\mods\mod.db", output);
+            File.AppendAllText(@"Launcher\mods\mod.db", "");
             progress_bar.Value = progress_bar.Value + 28;
         }
         private void DownloadEngine()
@@ -170,26 +171,5 @@ namespace launcher
             Directory.CreateDirectory(@"Launcher\mods\diffs");
             progress_bar.Value++;
         }
-        public static string CreateMD5(string input)
-        {
-            // Use input string to calculate MD5 hash
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
-
-                return Convert.ToHexString(hashBytes); // .NET 5 +
-            }
-        }
-    }
-
-    internal class ModDB
-    {
-        public ModDB()
-        {
-
-        }
-
-        public string[] InstalledMods { get; internal set; }
     }
 }
