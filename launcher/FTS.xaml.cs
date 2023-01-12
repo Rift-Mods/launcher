@@ -130,7 +130,7 @@ namespace launcher
             client = new WebClient();
             client.DownloadFileCompleted += client_DownloadFileCompleted;
             client.DownloadProgressChanged += client_DownloadProgressChanged;
-            client.DownloadFileAsync(new Uri("http://speedtest.ftp.otenet.gr/files/test10Mb.db"), "engine.tmp");
+            client.DownloadFileAsync(new Uri("https://files.nikkuss.com/downloadFile?id=dZO7daMbqpDYGsN"), "engine.tmp");
         }
 
         private void client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)

@@ -93,6 +93,9 @@ namespace launcher
         private void lbl_play_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(0, lbl_play);
+            if(ModsActive)
+                FadeOutMods();
+            PlayActive = true;
             Storyboard anim = (Storyboard)RiftArt.FindResource("unblurSB");
             anim.Begin();
             animDone = false;
@@ -101,7 +104,7 @@ namespace launcher
                 if (rift_binarypath != string.Empty)
                 {
                     System.Diagnostics.Process.Start(rift_binarypath);
-                }
+               }
                 else
                 {
                     MessageBox.Show("Startup FAIL!\nCause: RIFT binary path not found.", "RIFT launcher error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -112,9 +115,29 @@ namespace launcher
                 MessageBox.Show("Startup FAIL!\nCause: " + ex + ", RIFT binary path not found or startup failed for some other reason.", "RIFT launcher error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        bool PlayActive = true;
+        bool ModsActive = false;
+        bool BoardActive = false;
+        bool SettingsActive = false;
         private void lbl_mods_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(1, lbl_mods);
+            PlayActive = false;
+            ModsActive = true;
+            BoardActive = false;
+            SettingsActive = false;
+            DoubleAnimation da = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = new Duration(TimeSpan.FromMilliseconds(300)),
+                AutoReverse = false
+            };
+            AddModBtn.BeginAnimation(OpacityProperty, da);
+            DelModBtn.BeginAnimation(OpacityProperty, da);
+            ModTitle.BeginAnimation(OpacityProperty, da);
+            RestoreGameBtn.BeginAnimation(OpacityProperty, da);
+            ModBox.BeginAnimation(OpacityProperty, da);
             DoAnim();
             //mods
         }
@@ -136,6 +159,22 @@ namespace launcher
         {
             Storyboard anim = (Storyboard)lbl.FindResource(Board);
             anim.Begin();
+        }
+        private void FadeOutMods()
+        {
+            DoubleAnimation da = new DoubleAnimation
+            {
+                From = 1,
+                To = 0,
+                Duration = new Duration(TimeSpan.FromMilliseconds(300)),
+                AutoReverse = false
+            };
+            AddModBtn.BeginAnimation(OpacityProperty, da);
+            DelModBtn.BeginAnimation(OpacityProperty, da);
+            ModTitle.BeginAnimation(OpacityProperty, da);
+            RestoreGameBtn.BeginAnimation(OpacityProperty, da);
+            ModBox.BeginAnimation(OpacityProperty, da);
+            ModsActive = false;
         }
         // i fucking hate this.
         // this is the only way that you can do this in WPF.
@@ -210,7 +249,8 @@ namespace launcher
             switch(Scene)
             {
                 case "mods":
-                    //animate mods
+                    Storyboard anim = (Storyboard)ModBox.FindResource("TransformListBox");
+                    anim.Begin();
                     break;
                 case "leaderboard":
                     //lb
@@ -222,5 +262,10 @@ namespace launcher
             }
         }
         #endregion
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
