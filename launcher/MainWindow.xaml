@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black" Loaded="Window_Loaded">
     <Grid Width="725">
-        <Image Margin="10,0,0,10" Source="/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
+        <Image Margin="10,0,0,10" Source="Images/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
         <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="99,369,0,39" Background="DarkGray" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter" MouseLeave="lbl_play_MouseLeave">
             <Label.Resources>
                 <Style TargetType="Border">
@@ -46,7 +46,7 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
-        <Label x:Name="lbl_leaderboard" Content="LEADERBOARD" HorizontalAlignment="Left" Margin="223,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_leaderboard_MouseDown" MouseEnter="lbl_leaderboard_MouseEnter" MouseLeave="lbl_leaderboard_MouseLeave">
+        <Label x:Name="lbl_leaderboard" Content="COMING SOON..." HorizontalAlignment="Left" Margin="218,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_leaderboard_MouseDown" MouseEnter="lbl_leaderboard_MouseEnter" MouseLeave="lbl_leaderboard_MouseLeave" Opacity="0.1">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -66,7 +66,7 @@
             </Label.Resources>
         </Label>
         <Label Content="RIFT art goes here...&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-        <Label x:Name="lbl_settings" Content="SETTINGS" HorizontalAlignment="Left" Margin="323,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_settings_MouseDown" MouseLeave="lbl_settings_MouseLeave" MouseEnter="lbl_settings_MouseEnter">
+        <Label x:Name="lbl_settings" Content="COMING SOON..." HorizontalAlignment="Left" Margin="323,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_settings_MouseDown" MouseLeave="lbl_settings_MouseLeave" MouseEnter="lbl_settings_MouseEnter" Opacity="0.1">
             <Label.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -85,7 +85,7 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
-        <Image Margin="10,0,10,0" Source="/ltt onlyfans.png" Stretch="Fill" Height="340" VerticalAlignment="Top" x:Name="RiftArt" Opacity="0.98">
+        <Image Margin="10,10,10,0" Source="Images/background.jpg" Stretch="Fill" Height="330" VerticalAlignment="Top" x:Name="RiftArt" Opacity="0.98">
             <Image.Effect>
                 <BlurEffect x:Name="blur" KernelType="Gaussian" Radius="0"></BlurEffect>
             </Image.Effect>
@@ -112,8 +112,8 @@
                 </Style>
             </ListBox.Resources>
         </ListBox>
- 
-        <Button x:Name="AddModBtn" Content="ADD" HorizontalAlignment="Left" Margin="230,287,0,0" VerticalAlignment="Top" Height="36" Width="84" Background="#7F252525" Foreground="White" Click="Button_Click" Opacity="0">
+
+        <Button x:Name="AddModBtn" Content="ADD" HorizontalAlignment="Left" Margin="230,287,0,0" VerticalAlignment="Top" Height="36" Width="84" Background="#7F252525" Foreground="White" Click="AddModBtn_Click" Opacity="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -127,7 +127,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="RestoreGameBtn" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="410,287,0,0" VerticalAlignment="Top" Height="36" Width="86" Foreground="Red" FontSize="12" Background="#99000000" Opacity="0">
+        <Button x:Name="RestoreGameBtn" Content="REMOVE ALL" HorizontalAlignment="Left" Margin="410,287,0,0" VerticalAlignment="Top" Height="36" Width="86" Foreground="Red" FontSize="12" Background="#99000000" Opacity="0" Click="RestoreGameBtn_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -135,7 +135,8 @@
             </Button.Resources>
         </Button>
         <Label Content="+ Mods" HorizontalAlignment="Left" Margin="52,388,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="8" Opacity="0"/>
-        <ProgressBar Height="10" Margin="615,414,10,0" VerticalAlignment="Top" Foreground="DeepSkyBlue" Maximum="10"/>
+        <ProgressBar x:Name="ModProgress" Height="5" Margin="10,345,10,0" VerticalAlignment="Top" Foreground="DeepSkyBlue" Maximum="10" BorderBrush="{x:Null}" Background="#FF2E2E2E"/>
         <Label x:Name="modProgressLabel" Content="" HorizontalAlignment="Left" Margin="11,406,0,0" VerticalAlignment="Top" Width="600" HorizontalContentAlignment="Right" Foreground="White"></Label>
+        <Label Content="1.0-pb1" Margin="575,398,10,10" HorizontalContentAlignment="Right" Foreground="#FF5D5D5D"/>
     </Grid>
 </Window>

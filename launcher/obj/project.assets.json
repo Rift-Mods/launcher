@@ -14,6 +14,52 @@
             "related": ".xml"
           }
         }
+      },
+      "Octokit/4.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Octokit.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Octokit.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Octokit.Reactive/4.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Octokit": "4.0.4",
+          "System.Reactive": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Octokit.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Octokit.Reactive.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Reactive/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/System.Reactive.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net5.0/_._": {}
+        }
       }
     }
   },
@@ -47,15 +93,74 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "Octokit/4.0.4": {
+      "sha512": "zrQKRYot7yPWb5Y0sSJdBpt/vVYkpkOFFWNo97BMvdXjm8FF1enL7dZxdjn0IC7YxrYWj7LqiFpKmnfBFhjYow==",
+      "type": "package",
+      "path": "octokit/4.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Octokit.dll",
+        "lib/netstandard2.0/Octokit.xml",
+        "octokit.4.0.4.nupkg.sha512",
+        "octokit.nuspec",
+        "octokit.png"
+      ]
+    },
+    "Octokit.Reactive/4.0.4": {
+      "sha512": "fCjSmTbMjuFpbmd/bQz9qBYV9Sd7zTqin28hWFzmsJEMENC6vym521UIRSFtVRIPnvSner+Or30C5Odl9op4Bg==",
+      "type": "package",
+      "path": "octokit.reactive/4.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Octokit.Reactive.dll",
+        "lib/netstandard2.0/Octokit.Reactive.xml",
+        "octokit.png",
+        "octokit.reactive.4.0.4.nupkg.sha512",
+        "octokit.reactive.nuspec"
+      ]
+    },
+    "System.Reactive/5.0.0": {
+      "sha512": "erBZjkQHWL9jpasCE/0qKAryzVBJFxGHVBAvgRN1bzM0q2s1S4oYREEEL0Vb+1kA/6BKb5FjUZMp5VXmy+gzkQ==",
+      "type": "package",
+      "path": "system.reactive/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net5.0/_._",
+        "build/netcoreapp3.1/System.Reactive.dll",
+        "build/netcoreapp3.1/System.Reactive.targets",
+        "build/netcoreapp3.1/System.Reactive.xml",
+        "buildTransitive/net5.0/_._",
+        "buildTransitive/netcoreapp3.1/System.Reactive.targets",
+        "lib/net472/System.Reactive.dll",
+        "lib/net472/System.Reactive.xml",
+        "lib/net5.0-windows10.0.19041/System.Reactive.dll",
+        "lib/net5.0-windows10.0.19041/System.Reactive.xml",
+        "lib/net5.0/System.Reactive.dll",
+        "lib/net5.0/System.Reactive.xml",
+        "lib/netcoreapp3.1/_._",
+        "lib/netstandard2.0/System.Reactive.dll",
+        "lib/netstandard2.0/System.Reactive.xml",
+        "lib/uap10.0.16299/System.Reactive.dll",
+        "lib/uap10.0.16299/System.Reactive.pri",
+        "lib/uap10.0.16299/System.Reactive.xml",
+        "system.reactive.5.0.0.nupkg.sha512",
+        "system.reactive.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "Newtonsoft.Json >= 13.0.2"
+      "Newtonsoft.Json >= 13.0.2",
+      "Octokit.Reactive >= 4.0.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ogor\\.nuget\\packages\\": {}
+    "C:\\Users\\ogor\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -66,8 +171,12 @@
       "packagesPath": "C:\\Users\\ogor\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\ogor\\Documents\\GitHub\\launcher\\launcher\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\ogor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -96,6 +205,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.2, )"
+          },
+          "Octokit.Reactive": {
+            "target": "Package",
+            "version": "[4.0.4, )"
           }
         },
         "imports": [
@@ -109,24 +222,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.13, 6.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.13, 6.0.13]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.13, 6.0.13]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.13, 6.0.13]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

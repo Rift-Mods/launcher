@@ -44,7 +44,6 @@ namespace launcher
             else
             {
                 progress_label.Content = "Downloading .NET...";
-                DownloadDotnet();
                 process.WaitForExit();
             }
             CheckCompletion();
@@ -79,12 +78,12 @@ namespace launcher
                     process.Start();
                     progress_bar.Value = 100;
                     progress_label.Content = "We're done here!";
-                    File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
                     File.AppendAllText(@"Launcher\Log.log", "FTS DONE!!!" + Environment.NewLine);
                     File.Delete("dotnet.exe");
                     MessageBox.Show("Hey there and thanks for downloading the launcher! We've been hard at work to make it work, so if you encounter any bugs feel free to reach out on: \nDiscord: BotchedRPR#1282\nGitHub: BotchedRPR\nWe hope that you enjoy using the launcher. Don't forget to copy your RIFT game files to the now created Launcher/RIFT folder.\nOnce again thanks for downloading, and we hope you'll enjoy using it!\n -BotchedRPR and Nikkuss");
                     MainWindow mw = new MainWindow();
                     mw.Show();
+                    File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
                     this.Hide();
                     Thread.Sleep(1000);
                     this.Close();
@@ -92,24 +91,6 @@ namespace launcher
                 }          
         }
         System.Diagnostics.Process process = new System.Diagnostics.Process();
-
-        private bool DownloadDotnet()
-        {
-            client = new WebClient();
-            client.DownloadFile("https://download.visualstudio.microsoft.com/download/pr/6ba69569-ee5e-460e-afd8-79ae3cd4617b/16a385a4fab2c5806f50f49f5581b4fd/dotnet-sdk-7.0.102-win-x64.exe", "dotnet.exe");
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = "dotnet.exe";
-            startInfo.Arguments = "/install /quiet /norestart";
-            process.StartInfo = startInfo;
-            process.Start();
-
-            progress_label.Content = "DON'T PANIC IF IT LOOKS STUCK. Installing .NET";
-            File.AppendAllText(@"Launcher\Log.log", ".NET install going" + Environment.NewLine);
-            hasDotNet = true;
-            System.Threading.Thread.Sleep(5000);
-            return true;
-        }
         private bool DotnetCheck()
         {
             try
@@ -118,7 +99,7 @@ namespace launcher
                 System.Diagnostics.Process.Start("dotnet");
                 return true;
             }
-            catch { File.AppendAllText(@"Launcher\Log.log", "!!! POSSIBLE TROUBLE CAUSE! !!!" + Environment.NewLine + "Starting .NET download." + Environment.NewLine); return false; }
+            catch { MessageBox.Show("Install .NET 7 SDK! The instructions are on the Discord."); return false; }
         }
         private void SerializeDB()
         {
@@ -130,7 +111,7 @@ namespace launcher
             client = new WebClient();
             client.DownloadFileCompleted += client_DownloadFileCompleted;
             client.DownloadProgressChanged += client_DownloadProgressChanged;
-            client.DownloadFileAsync(new Uri("https://files.nikkuss.com/downloadFile?id=dZO7daMbqpDYGsN"), "engine.tmp");
+            client.DownloadFile(new Uri("https://files.nikkuss.com/downloadFile?id=rMl8Wdqe6gO5LqY"), "engine.tmp");
         }
 
         private void client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)

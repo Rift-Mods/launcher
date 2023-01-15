@@ -8,21 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ltt onlyfans.png" />
+    <None Remove="Images\background.jpg" />
     <None Remove="RiftClear2.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="ltt onlyfans.png">
+    <Resource Include="Images\RiftClear2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="RiftClear2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Octokit.Reactive" Version="4.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
   </ItemGroup>
 
 </Project>
