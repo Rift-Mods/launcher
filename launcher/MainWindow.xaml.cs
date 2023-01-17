@@ -301,6 +301,7 @@ namespace launcher
             {
                 MessageBox.Show("A launcher error has occured.\n\nHave you copied RIFT to the Launcher/RIFT directory?", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            ModBox.Items.Clear();
             var lines = File.ReadLines(@"Launcher\mods\mod.db");
             foreach (String line in lines)
             {
@@ -311,7 +312,8 @@ namespace launcher
         private void RestoreGameBtn_Click(object sender, RoutedEventArgs e)
         {
             RestoreOG(ModProgress);
-            //mod.db changes
+            File.Delete(@"Launcher\mods\mod.db");
+            File.AppendAllText(@"Launcher\mods\mod.db", "");
         }
     }
 }

@@ -35,6 +35,7 @@ namespace launcher
             progress_label.Content = "Setting up the mod database";
             File.AppendAllText(@"Launcher\Log.log", "ST2" + Environment.NewLine);
             SerializeDB();
+            progress_bar.Value = progress_bar.Value + 28;
             progress_label.Content = "Checking for dotnet";
             File.AppendAllText(@"Launcher\Log.log", "ST3" + Environment.NewLine);
             if (DotnetCheck())
@@ -96,10 +97,9 @@ namespace launcher
             }
             catch { MessageBox.Show("Install .NET 6 SDK! The instructions are on the Discord."); Environment.Exit(-1); return false; }
         }
-        private void SerializeDB()
+        public void SerializeDB()
         {
             File.AppendAllText(@"Launcher\mods\mod.db", "");
-            progress_bar.Value = progress_bar.Value + 28;
         }
         private async Task DownloadEngine()
         {
