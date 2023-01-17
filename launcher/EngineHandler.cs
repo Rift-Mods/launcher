@@ -23,6 +23,7 @@ namespace launcher
                 si.FileName = @"Launcher\Engine\engine.exe";
                 si.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 si.Arguments = "add \"" + MainWindow.rift_binarypath.Replace("RIFT.exe", "") + "\" \"" + zip + "\"";
+                si.Arguments = si.Arguments.Replace(@"\", "/"); //nik come on
                 si.RedirectStandardOutput = true;
                 si.RedirectStandardError = true;
                 si.UseShellExecute = false;
