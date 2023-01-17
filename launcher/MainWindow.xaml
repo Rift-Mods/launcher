@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:launcher"
         mc:Ignorable="d"
-        Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black" Loaded="Window_Loaded">
+        Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black" ResizeMode="CanMinimize">
     <Grid Width="725">
         <Image Margin="10,0,0,10" Source="Images/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
         <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="99,369,0,39" Background="DarkGray" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter" MouseLeave="lbl_play_MouseLeave">

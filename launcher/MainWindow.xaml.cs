@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using static launcher.EngineHandler;
-using static launcher.Updater;
+
 
 namespace launcher
 {
@@ -24,11 +24,21 @@ namespace launcher
         public MainWindow()
         {
             this.Visibility = Visibility.Hidden;
+            if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN")
+            {
+                buttonsEnabled[0] = true; //enable play button as default
+                this.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                FTS fts = new FTS();
+                fts.Show();
+            }
             if (File.Exists("launcher.old"))
                 File.Delete("launcher.old");
             if(File.Exists("launcher.new"))
                 File.Delete("launcher.new");
-            CheckForUpdate();
+            //CheckForUpdate();
             try
             {
                 this.Visibility = Visibility.Visible;
@@ -48,20 +58,6 @@ namespace launcher
                 }
             }
             catch { }
-        }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN")
-            {
-                buttonsEnabled[0] = true; //enable play button as default
-            }
-            else 
-            {
-                this.Visibility = Visibility.Hidden;
-                FTS fts = new FTS();
-                fts.Show();
-            }
-
         }
         #region Buttons
         private void ClearButtons()

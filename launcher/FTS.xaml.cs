@@ -22,7 +22,7 @@ namespace launcher
         }
         bool completed = false;
         bool dnC = false;
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             progress_label.Content = "Creating directories...";
             CreateDirs();
@@ -30,23 +30,24 @@ namespace launcher
             CreateFiles();
             progress_label.Content = "Downloading the modding engine";
             File.AppendAllText(@"Launcher\Log.log", "ST1" + Environment.NewLine);
-            DownloadEngine();
+            await DownloadEngine();
+            CopyEngine();
             progress_label.Content = "Setting up the mod database";
             File.AppendAllText(@"Launcher\Log.log", "ST2" + Environment.NewLine);
             SerializeDB();
             progress_label.Content = "Checking for dotnet";
             File.AppendAllText(@"Launcher\Log.log", "ST3" + Environment.NewLine);
-            if (DotnetCheck())
-            {
-                progress_label.Content = "Finishing up...";
-                hasDotNet = true;
-            }
-            else
-            {
-                progress_label.Content = "Downloading .NET...";
-                process.WaitForExit();
-            }
-            CheckCompletion();
+            //if (DotnetCheck())
+            //{
+            //    progress_label.Content = "Finishing up...";
+            //    hasDotNet = true;
+            //}
+            //else
+            //{
+            //    progress_label.Content = "Downloading .NET...";
+            //    process.WaitForExit();
+            //}
+            //CheckCompletion();
 
         }
         int i = 0;
@@ -106,25 +107,24 @@ namespace launcher
             File.AppendAllText(@"Launcher\mods\mod.db", "");
             progress_bar.Value = progress_bar.Value + 28;
         }
-        private void DownloadEngine()
+        private async Task DownloadEngine()
         {
             client = new WebClient();
-            client.DownloadFileCompleted += client_DownloadFileCompleted;
             client.DownloadProgressChanged += client_DownloadProgressChanged;
-            client.DownloadFile(new Uri("https://files.nikkuss.com/downloadFile?id=rMl8Wdqe6gO5LqY"), "engine.tmp");
-        }
-
-        private void client_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
+            await client.DownloadFileTaskAsync(new Uri("https://files.nikkuss.com/downloadFile?id=rMl8Wdqe6gO5LqY"), "engine.tmp");
             i = 0;
+        }
+        private void CopyEngine()
+        {
             progress_label.Content = "Copying the modding engine";
-            if(File.Exists(@"Launcher\Engine\engine.exe"))
+            if (File.Exists(@"Launcher\Engine\engine.exe"))
                 File.Delete(@"Launcher\Engine\engine.exe");
             File.Copy("engine.tmp", @"Launcher\Engine\engine.exe");
             progress_bar.Value = progress_bar.Value + 10;
             File.AppendAllText(@"Launcher\Log.log", "FTSDL complete" + Environment.NewLine);
             dnC = true;
         }
+
         private void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progress_bar.Value = 7 + e.ProgressPercentage / 2;
