@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -10,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using static launcher.EngineHandler;
-
+using static launcher.Updater;
 
 namespace launcher
 {
@@ -38,10 +39,19 @@ namespace launcher
                 File.Delete("launcher.old");
             if(File.Exists("launcher.new"))
                 File.Delete("launcher.new");
-            //CheckForUpdate();
+            FinishStart();
+        }
+        private async void FinishStart()
+        {
+            CheckForUpdate();
+            while (!UpdaterCheckDone)
+            {
+                await Task.Delay(25);
+            }
+            if (UpdateAvailable == true)
+                this.Visibility = Visibility.Hidden;
             try
             {
-                this.Visibility = Visibility.Visible;
                 InitializeComponent();
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();

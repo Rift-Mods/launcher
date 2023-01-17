@@ -137,6 +137,6 @@
         <Label Content="+ Mods" HorizontalAlignment="Left" Margin="52,388,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="8" Opacity="0"/>
         <ProgressBar x:Name="ModProgress" Height="5" Margin="10,345,10,0" VerticalAlignment="Top" Foreground="DeepSkyBlue" Maximum="10" BorderBrush="{x:Null}" Background="#FF2E2E2E"/>
         <Label x:Name="modProgressLabel" Content="" HorizontalAlignment="Left" Margin="11,406,0,0" VerticalAlignment="Top" Width="600" HorizontalContentAlignment="Right" Foreground="White"></Label>
-        <Label Content="1.0-pb1" Margin="575,398,10,10" HorizontalContentAlignment="Right" Foreground="#FF5D5D5D"/>
+        <Label Content="1.0.1" Margin="575,398,10,10" HorizontalContentAlignment="Right" Foreground="#FF5D5D5D"/>
     </Grid>
 </Window>

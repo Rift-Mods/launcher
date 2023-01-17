@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:launcher"
         mc:Ignorable="d"
-        Title="Launcher update in progress..." Height="89" Width="369" Background="Black" Foreground="White" Loaded="Window_Loaded">
-    <Grid>
-        <Label Content="A new launcher update is available. Updating...&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White"/>
-        <ProgressBar x:Name="UpdateBar" Height="21" Margin="10,37,10,0" VerticalAlignment="Top" Foreground="#FF009CFF" BorderBrush="Black" Background="#FF050505"/>
+        Title="Launcher update in progress..." SizeToContent="WidthAndHeight" Background="Black" Foreground="White" Loaded="Window_Loaded" Height="90">
+    <Grid Height="62">
+        <Label Content="A new launcher update is available. Updating...&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White" Grid.ColumnSpan="2"/>
+        <ProgressBar x:Name="UpdateBar" Height="22" Margin="10,32,10,0" VerticalAlignment="Top" Foreground="#FF009CFF" BorderBrush="Black" Background="#FF050505"/>
 
     </Grid>
 </Window>

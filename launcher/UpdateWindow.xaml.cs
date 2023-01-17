@@ -26,16 +26,21 @@ namespace launcher
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WebClient webClient = new WebClient();
             string sourceFile = @"https://github.com/Rift-Mods/launcher/releases/latest/download/launcher.exe";
             string destFile = @"launcher.new";
-            webClient.DownloadFile(new Uri(sourceFile), destFile);
+            webClient.DownloadProgressChanged += HandleProgress;
+            await webClient.DownloadFileTaskAsync(new Uri(sourceFile), destFile);
             System.IO.File.Move("launcher.exe", "launcher.old");
             System.IO.File.Move("launcher.new", "launcher.exe");
             MessageBox.Show("Update completed. Please restart the launcher.");
             Application.Current.Shutdown();
+        }
+        private void HandleProgress(object sender, DownloadProgressChangedEventArgs e)
+        {
+            UpdateBar.Value = e.ProgressPercentage;
         }
     }
 }

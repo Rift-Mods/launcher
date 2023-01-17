@@ -37,17 +37,12 @@ namespace launcher
             SerializeDB();
             progress_label.Content = "Checking for dotnet";
             File.AppendAllText(@"Launcher\Log.log", "ST3" + Environment.NewLine);
-            //if (DotnetCheck())
-            //{
-            //    progress_label.Content = "Finishing up...";
-            //    hasDotNet = true;
-            //}
-            //else
-            //{
-            //    progress_label.Content = "Downloading .NET...";
-            //    process.WaitForExit();
-            //}
-            //CheckCompletion();
+            if (DotnetCheck())
+            {
+                progress_label.Content = "Finishing up...";
+                hasDotNet = true;
+            }
+            CheckCompletion();
 
         }
         int i = 0;
@@ -82,16 +77,15 @@ namespace launcher
                     File.AppendAllText(@"Launcher\Log.log", "FTS DONE!!!" + Environment.NewLine);
                     File.Delete("dotnet.exe");
                     MessageBox.Show("Hey there and thanks for downloading the launcher! We've been hard at work to make it work, so if you encounter any bugs feel free to reach out on: \nDiscord: BotchedRPR#1282\nGitHub: BotchedRPR\nWe hope that you enjoy using the launcher. Don't forget to copy your RIFT game files to the now created Launcher/RIFT folder.\nOnce again thanks for downloading, and we hope you'll enjoy using it!\n -BotchedRPR and Nikkuss");
+                    File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
                     MainWindow mw = new MainWindow();
                     mw.Show();
-                    File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
                     this.Hide();
                     Thread.Sleep(1000);
                     this.Close();
                 }
                 }          
         }
-        System.Diagnostics.Process process = new System.Diagnostics.Process();
         private bool DotnetCheck()
         {
             try
@@ -100,7 +94,7 @@ namespace launcher
                 System.Diagnostics.Process.Start("dotnet");
                 return true;
             }
-            catch { MessageBox.Show("Install .NET 7 SDK! The instructions are on the Discord."); return false; }
+            catch { MessageBox.Show("Install .NET 6 SDK! The instructions are on the Discord."); Environment.Exit(-1); return false; }
         }
         private void SerializeDB()
         {
