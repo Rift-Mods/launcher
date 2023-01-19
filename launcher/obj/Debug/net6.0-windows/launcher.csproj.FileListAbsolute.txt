@@ -1,3 +1,10 @@
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher.csproj.AssemblyReference.cache
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.g.cs
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\UpdateWindow.g.cs
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher_MarkupCompile.cache
+C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher_MarkupCompile.lref
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\launcher.exe
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\launcher.deps.json
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\launcher.runtimeconfig.json
@@ -7,13 +14,6 @@ C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\Newton
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\Octokit.dll
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\Octokit.Reactive.dll
 C:\Users\ogor\Documents\GitHub\launcher\launcher\bin\Debug\net6.0-windows\System.Reactive.dll
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher.csproj.AssemblyReference.cache
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.g.cs
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\UpdateWindow.g.cs
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher_MarkupCompile.cache
-C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\launcher_MarkupCompile.lref
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\FTS.baml
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\ogor\Documents\GitHub\launcher\launcher\obj\Debug\net6.0-windows\UpdateWindow.baml

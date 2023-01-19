@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="RIFT launcher" SizeToContent="WidthAndHeight" Background="Black" ResizeMode="CanMinimize">
     <Grid Width="725">
-        <Image Margin="10,0,0,10" Source="Images/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
-        <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="99,369,0,39" Background="DarkGray" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter" MouseLeave="lbl_play_MouseLeave">
+        <Image Margin="10,0,0,2" Source="Images/RiftClear2.png" Stretch="Fill" Height="84" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="84"/>
+        <Label x:Name="lbl_play" Content="PLAY" HorizontalAlignment="Left" Margin="99,375,0,33" Background="DarkGray" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_play_MouseDown" MouseEnter="lbl_play_MouseEnter" MouseLeave="lbl_play_MouseLeave">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -27,7 +27,7 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
-        <Label x:Name="lbl_mods" Content="MODS" HorizontalAlignment="Left" Margin="160,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_mods_MouseDown" MouseEnter="lbl_mods_MouseEnter" MouseLeave="lbl_mods_MouseLeave">
+        <Label x:Name="lbl_mods" Content="MODS" HorizontalAlignment="Left" Margin="166,375,0,33" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_mods_MouseDown" MouseEnter="lbl_mods_MouseEnter" MouseLeave="lbl_mods_MouseLeave">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -46,7 +46,7 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
-        <Label x:Name="lbl_leaderboard" Content="COMING SOON..." HorizontalAlignment="Left" Margin="218,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_leaderboard_MouseDown" MouseEnter="lbl_leaderboard_MouseEnter" MouseLeave="lbl_leaderboard_MouseLeave" Opacity="0.1">
+        <Label x:Name="lbl_leaderboard" Content="COMING SOON..." HorizontalAlignment="Left" Margin="320,375,0,33" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_leaderboard_MouseDown" MouseEnter="lbl_leaderboard_MouseEnter" MouseLeave="lbl_leaderboard_MouseLeave" Opacity="0.1">
             <Label.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -66,7 +66,7 @@
             </Label.Resources>
         </Label>
         <Label Content="RIFT art goes here...&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-        <Label x:Name="lbl_settings" Content="COMING SOON..." HorizontalAlignment="Left" Margin="323,369,0,39" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_settings_MouseDown" MouseLeave="lbl_settings_MouseLeave" MouseEnter="lbl_settings_MouseEnter" Opacity="0.1">
+        <Label x:Name="lbl_settings" Content="SETTINGS" HorizontalAlignment="Left" Margin="236,375,0,33" Background="Black" Foreground="White" FontFamily="Segoe UI Light" MouseDown="lbl_settings_MouseDown" MouseLeave="lbl_settings_MouseLeave" MouseEnter="lbl_settings_MouseEnter">
             <Label.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -85,11 +85,11 @@
                 </Storyboard>
             </Label.Resources>
         </Label>
-        <Image Margin="10,10,10,0" Source="Images/background.jpg" Stretch="Fill" Height="330" VerticalAlignment="Top" x:Name="RiftArt" Opacity="0.98">
-            <Image.Effect>
+        <Border Margin="10,10,10,94" x:Name="RiftArt" CornerRadius="5">
+            <Border.Effect>
                 <BlurEffect x:Name="blur" KernelType="Gaussian" Radius="0"></BlurEffect>
-            </Image.Effect>
-            <Image.Resources>
+            </Border.Effect>
+            <Border.Resources>
                 <Storyboard x:Key="blurSB">
                     <DoubleAnimation From="0" To="50" Duration="00:00:00.30"
                                      Storyboard.TargetName="blur"
@@ -102,8 +102,12 @@
                                      Storyboard.TargetProperty="Radius"
                                      ></DoubleAnimation>
                 </Storyboard>
-            </Image.Resources>
-        </Image>
+            </Border.Resources>
+            <Border.Background>
+                <ImageBrush Stretch="Fill" ImageSource="Images/background.jpg"/>
+            </Border.Background>
+        </Border>
+
         <Label x:Name="ModTitle" Content="Mods" HorizontalAlignment="Center" Margin="0,10,0,389" Foreground="White" Background="{x:Null}" Width="55" FontSize="16" Opacity="0"/>
         <ListBox x:Name="ModBox" Margin="29,50,29,154" Background="#7F000000" Foreground="White" Opacity="0">
             <ListBox.Resources>
@@ -112,7 +116,6 @@
                 </Style>
             </ListBox.Resources>
         </ListBox>
-
         <Button x:Name="AddModBtn" Content="ADD" HorizontalAlignment="Left" Margin="230,287,0,0" VerticalAlignment="Top" Height="36" Width="84" Background="#7F252525" Foreground="White" Click="AddModBtn_Click" Opacity="0">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -137,6 +140,22 @@
         <Label Content="+ Mods" HorizontalAlignment="Left" Margin="52,388,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontSize="8" Opacity="0"/>
         <ProgressBar x:Name="ModProgress" Height="5" Margin="10,345,10,0" VerticalAlignment="Top" Foreground="DeepSkyBlue" Maximum="10" BorderBrush="{x:Null}" Background="#FF2E2E2E"/>
         <Label x:Name="modProgressLabel" Content="" HorizontalAlignment="Left" Margin="11,406,0,0" VerticalAlignment="Top" Width="600" HorizontalContentAlignment="Right" Foreground="White"></Label>
-        <Label Content="1.0.1" Margin="575,398,10,10" HorizontalContentAlignment="Right" Foreground="#FF5D5D5D"/>
+        <Label Content="1.1" Margin="575,398,10,10" HorizontalContentAlignment="Right" Foreground="#FF5D5D5D"/>
+        <Label x:Name="btn_save" Content="SAVE" HorizontalAlignment="Left" Margin="660,297,0,111" Background="#7F000000" Foreground="White" FontFamily="Segoe UI Light">
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Label.Resources>
+        </Label>
+        <TextBox HorizontalAlignment="Left" Margin="117,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="242"/>
+        <Label Content="RIFT path" HorizontalAlignment="Left" Margin="34,28,0,0" VerticalAlignment="Top" Foreground="White" Background="#4C000000"/>
+        <Label x:Name="btn_browse" Content="BROWSE" HorizontalAlignment="Left" Margin="378,28,0,380" Background="#B2D8D8D8" Foreground="Black" FontFamily="Segoe UI Light" >
+            <Label.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+                </Style>
+            </Label.Resources>
+        </Label>
     </Grid>
 </Window>

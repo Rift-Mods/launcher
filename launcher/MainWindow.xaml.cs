@@ -179,6 +179,17 @@ namespace launcher
         private void lbl_settings_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SetActive(3, lbl_settings);
+            PlayActive = false;
+            ModsActive = false;
+            BoardActive = false;
+            SettingsActive = true;
+            DoubleAnimation da = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = new Duration(TimeSpan.FromMilliseconds(300)),
+                AutoReverse = false
+            };
             DoAnim();
             //settings
         }
@@ -314,6 +325,16 @@ namespace launcher
             RestoreOG(ModProgress);
             File.Delete(@"Launcher\mods\mod.db");
             File.AppendAllText(@"Launcher\mods\mod.db", "");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lbl_settings_Copy_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
