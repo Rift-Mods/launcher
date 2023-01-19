@@ -54,7 +54,8 @@ ipch/
 *.psess
 *.vsp
 *.vspx
-
+#VS temp files
+.vs/
 # Guidance Automation Toolkit
 *.gpState
 
