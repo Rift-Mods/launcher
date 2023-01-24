@@ -66,6 +66,7 @@ namespace launcher
                 {
                     ModBox.Items.Add(line.Split('|')[0]);
                 }
+                verLabel.Content = Updater.Version;
             }
             catch { }
         }

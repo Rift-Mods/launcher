@@ -12,6 +12,7 @@ namespace launcher
     {
         public static bool UpdateAvailable = false;
         public static bool UpdaterCheckDone = false;
+        public static string Version = "2.0.0";
         public static async void CheckForUpdate()
         {
             try
@@ -21,7 +22,7 @@ namespace launcher
 
                 //Setup the versions
                 Version latestGitHubVersion = new Version(releases[0].TagName);
-                Version localVersion = new Version("1.0.2"); //Replace this with your local version. 
+                Version localVersion = new Version(Version); //Replace this with your local version. 
                                                              //Only tested with numeric values.
 
                 int versionComparison = localVersion.CompareTo(latestGitHubVersion);
