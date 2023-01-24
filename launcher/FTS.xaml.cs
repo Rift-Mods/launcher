@@ -105,7 +105,7 @@ namespace launcher
         {
             client = new WebClient();
             client.DownloadProgressChanged += client_DownloadProgressChanged;
-            await client.DownloadFileTaskAsync(new Uri("https://files.nikkuss.com/downloadFile?id=rMl8Wdqe6gO5LqY"), "engine.tmp");
+            await client.DownloadFileTaskAsync(new Uri("https://github.com/Rift-Mods/engine/releases/latest/download/engine.exe"), "engine.tmp");
             i = 0;
         }
         private void CopyEngine()
