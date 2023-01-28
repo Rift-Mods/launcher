@@ -8,11 +8,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Quicksand-Bold.ttf" />
+    <None Remove="Fonts\Quicksand-Light.ttf" />
+    <None Remove="Fonts\Quicksand-Medium.ttf" />
+    <None Remove="Fonts\Quicksand-Regular.ttf" />
+    <None Remove="Fonts\Quicksand-SemiBold.ttf" />
     <None Remove="Images\background.jpg" />
     <None Remove="RiftClear2.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Quicksand-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Quicksand-Light.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Quicksand-Medium.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Quicksand-Regular.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Quicksand-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\background.jpg" />
     <Resource Include="Images\RiftClear2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -22,6 +42,10 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Octokit.Reactive" Version="4.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Model\" />
   </ItemGroup>
 
 </Project>

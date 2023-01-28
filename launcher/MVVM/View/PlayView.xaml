@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="launcher.MVVM.View.PlayView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:launcher.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Image Source="/Images/background.jpg" Opacity=".7" Margin="0,0,0,2" Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="50"/>
+            </Image.Effect>
+        </Image>
+        <Button Content="Play RIFT" FontFamily="{StaticResource Quicksand-Regular}" Margin="0,325,0,0" Background="#66FFFFFF" HorizontalAlignment="Center" Width="190" Height="66" VerticalAlignment="Top"/>
+        <Image Source="..\..\Images/RiftClear2.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,10,0,0" HorizontalAlignment="Center" Width="240" Height="240" VerticalAlignment="Top"/>
+        <CheckBox Content="Mods disabled" FontFamily="{StaticResource Quicksand-Regular}" HorizontalAlignment="Center" Margin="0,396,0,0" VerticalAlignment="Top" Foreground="#CC000000" Background="#66FFFFFF"/>
+        <Rectangle HorizontalAlignment="Left" Height="24" Margin="766,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="24" />
+    </Grid>
+</UserControl>

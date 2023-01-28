@@ -12,6 +12,9 @@
     <Compile Update="FTS.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\View\PlayView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UpdateWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,7 +23,13 @@
     <Page Update="FTS.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="LauncherUI\MButtonStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\View\PlayView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UpdateWindow.xaml">
