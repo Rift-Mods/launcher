@@ -54,20 +54,23 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="37*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" x:Name="verLabel" Content="v" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" HorizontalAlignment="Left" FontSize="18" Margin="5,0,0,0" Width="20"/>
+            <Label Grid.Row="0" x:Name="verLabel" Content="v" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" HorizontalAlignment="Left" FontSize="18" Margin="5,0,0,0" Width="125"/>
             <StackPanel Grid.Row="1">
                 <RadioButton Content="🎮 Play"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MButtonStyle}"
                              FontFamily="{StaticResource Quicksand-Regular}"
-                             FontSize="18"/>
+                             FontSize="18"
+                             IsChecked="True"
+                             Command="{Binding MainCommand}"/>
                 <RadioButton Content="🧰 Mods"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MButtonStyle}"
                              FontFamily="{StaticResource Quicksand-Regular}"
-                             FontSize="18"/>
+                             FontSize="18"
+                             Command="{Binding ModCommand}"/>
                 <RadioButton Content="⚙ Settings"
                              Height="50"
                              Foreground="White"
