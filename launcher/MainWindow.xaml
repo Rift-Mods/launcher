@@ -56,19 +56,19 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" x:Name="verLabel" Content="v" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" HorizontalAlignment="Left" FontSize="18" Margin="5,0,0,0" Width="20"/>
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Play"
+                <RadioButton Content="🎮 Play"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MButtonStyle}"
                              FontFamily="{StaticResource Quicksand-Regular}"
                              FontSize="18"/>
-                <RadioButton Content="Mods"
+                <RadioButton Content="🧰 Mods"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MButtonStyle}"
                              FontFamily="{StaticResource Quicksand-Regular}"
                              FontSize="18"/>
-                <RadioButton Content="Settings"
+                <RadioButton Content="⚙ Settings"
                              Height="50"
                              Foreground="White"
                              Style="{StaticResource MButtonStyle}"
