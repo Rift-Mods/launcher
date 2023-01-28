@@ -14,20 +14,48 @@
         TextOptions.TextRenderingMode="Auto"
         TextOptions.TextFormattingMode="Ideal"
         RenderOptions.ClearTypeHint="Auto">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="Frameless">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Opacity" Value="0.3" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Window.DataContext>
         <playView:MainViewModel/>
     </Window.DataContext>
     <Border Background="#FF0D0E0E" CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="13*"/>
-                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="130*"/>
+                <ColumnDefinition Width="643*"/>
+                <ColumnDefinition Width="27*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="37*"/>
             </Grid.RowDefinitions>
+            <Label Grid.Row="0" x:Name="verLabel" Content="v" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" HorizontalAlignment="Left" FontSize="18" Margin="5,0,0,0" Width="20"/>
             <StackPanel Grid.Row="1">
-                <Label x:Name="verLabel" Content="v" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" HorizontalAlignment="Left" FontSize="18" Margin="5,0,0,0"/>
                 <RadioButton Content="Play"
                              Height="50"
                              Foreground="White"
@@ -47,9 +75,11 @@
                              FontFamily="{StaticResource Quicksand-Regular}"
                              FontSize="18"/>
             </StackPanel>
-            <Label x:Name="credits" Content="ART BY CARBON | GAME BY CARBON AND THE TEAM | LAUNCHER BY BOTCHEDRPR | ENGINE BY NIKKUSS" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" FontSize="12" Margin="61,444,10,10" Grid.Column="1"/>
-            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding CurrentView}"/>
-            <Rectangle Grid.ColumnSpan="2" Margin="0,0,0,448" MouseDown="Rectangle_MouseDown" Fill="Transparent"/> <!--I dont know why i need to set the fill to transparent for it to work but it works--> 
+            <Label x:Name="credits" Content="ART BY CARBON | GAME BY CARBON AND THE TEAM | LAUNCHER BY BOTCHEDRPR | ENGINE BY NIKKUSS" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" FontSize="12" Margin="61,408,10,10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+            <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <Rectangle Grid.ColumnSpan="3" Margin="0,0,0,4" MouseDown="Rectangle_MouseDown" Fill="Transparent"/>
+            <Button Grid.Column="2" x:Name="CloseButton" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Quicksand-Regular}" FontSize="18" Click="CloseButton_Click" Style="{StaticResource Frameless}" />
+            <!--I dont know why i need to set the fill to transparent for it to work but it works-->
         </Grid>
     </Border>
 </Window>
