@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using launcher.LauncherUI;
+﻿using launcher.LauncherUI;
 
 namespace launcher.MVVM.VModel
 {
@@ -11,18 +6,18 @@ namespace launcher.MVVM.VModel
     {
 
         public RCommand ModCommand { get; set; }
-        public RCommand MainCommand { get; set; }  
+        public RCommand MainCommand { get; set; }
         public ModViewModel ModVM { get; set; }
         public PlayViewModel PlayVM { get; set; }
 
         private object _currentView;
 
         public object CurrentView
-        { 
+        {
             get { return _currentView; }
             set
-            { 
-                _currentView= value;
+            {
+                _currentView = value;
                 OnPropertyChanged();
             }
         }
@@ -41,6 +36,6 @@ namespace launcher.MVVM.VModel
             {
                 CurrentView = ModVM;
             });
-        }  
+        }
     }
 }

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using static launcher.CommonClass;
 namespace launcher
 {
     /// <summary>
@@ -20,8 +16,6 @@ namespace launcher
         {
             InitializeComponent();
         }
-        bool completed = false;
-        bool dnC = false;
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             progress_label.Content = "Creating directories...";
@@ -29,20 +23,12 @@ namespace launcher
             progress_label.Content = "Creating files...";
             CreateFiles();
             progress_label.Content = "Downloading the modding engine";
-            File.AppendAllText(@"Launcher\Log.log", "ST1" + Environment.NewLine);
             await DownloadEngine();
             CopyEngine();
             progress_label.Content = "Setting up the mod database";
-            File.AppendAllText(@"Launcher\Log.log", "ST2" + Environment.NewLine);
             SerializeDB();
             progress_bar.Value = progress_bar.Value + 28;
-            progress_label.Content = "Checking for dotnet";
-            File.AppendAllText(@"Launcher\Log.log", "ST3" + Environment.NewLine);
-            if (DotnetCheck())
-            {
-                progress_label.Content = "Finishing up...";
-                hasDotNet = true;
-            }
+            progress_label.Content = "Finishing up...";
             CheckCompletion();
 
         }
@@ -50,52 +36,15 @@ namespace launcher
         bool hasDotNet = false;
         private async void CheckCompletion()
         {
-            var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(1));
-            while (await periodicTimer.WaitForNextTickAsync())
-            {
-                    if (hasDotNet)
-                    {
-                        progress_bar.Value = 85;
-                        i++;
-                    }
-                    else
-                    {
-                        File.AppendAllText(@"Launcher\Log.log", "Nope, retry." + Environment.NewLine);
-                        i++;
-                        CheckCompletion();
-                    }
-                if (hasDotNet && i == 1)
-                {
-                    System.Diagnostics.Process process = new System.Diagnostics.Process();
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                    startInfo.FileName = "cmd.exe";
-                    startInfo.Arguments = "/C dotnet tool install ilspycmd -g";
-                    process.StartInfo = startInfo;
-                    process.Start();
-                    progress_bar.Value = 100;
-                    progress_label.Content = "We're done here!";
-                    File.AppendAllText(@"Launcher\Log.log", "FTS DONE!!!" + Environment.NewLine);
-                    File.Delete("dotnet.exe");
-                    MessageBox.Show("Hey there and thanks for downloading the launcher! We've been hard at work to make it work, so if you encounter any bugs feel free to reach out on: \nDiscord: BotchedRPR#1282\nGitHub: BotchedRPR\nWe hope that you enjoy using the launcher. Don't forget to copy your RIFT game files to the now created Launcher/RIFT folder.\nOnce again thanks for downloading, and we hope you'll enjoy using it!\n -BotchedRPR and Nikkuss");
-                    File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
-                    MainWindow mw = new MainWindow();
-                    mw.Show();
-                    this.Hide();
-                    Thread.Sleep(1000);
-                    this.Close();
-                }
-                }          
-        }
-        private bool DotnetCheck()
-        {
-            try
-            {
-                System.Diagnostics.Process process = new System.Diagnostics.Process();
-                System.Diagnostics.Process.Start("dotnet");
-                return true;
-            }
-            catch { MessageBox.Show("Install .NET 6 SDK! The instructions are on the Discord."); Environment.Exit(-1); return false; }
+            progress_bar.Value = 100;
+            progress_label.Content = "We're done here!";
+            MessageBox.Show("Hey there and thanks for downloading the launcher! We've been hard at work to make it work, so if you encounter any bugs feel free to reach out on: \nDiscord: BotchedRPR#1282\nGitHub: BotchedRPR\nWe hope that you enjoy using the launcher. Don't forget to copy your RIFT game files to the now created Launcher/RIFT folder.\nOnce again thanks for downloading, and we hope you'll enjoy using it!\n -BotchedRPR and Nikkuss");
+            File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Hide();
+            Thread.Sleep(1000);
+            this.Close();
         }
         public void SerializeDB()
         {
@@ -114,9 +63,7 @@ namespace launcher
             if (File.Exists(@"Launcher\Engine\engine.exe"))
                 File.Delete(@"Launcher\Engine\engine.exe");
             File.Copy("engine.tmp", @"Launcher\Engine\engine.exe");
-            progress_bar.Value = progress_bar.Value + 10;
-            File.AppendAllText(@"Launcher\Log.log", "FTSDL complete" + Environment.NewLine);
-            dnC = true;
+            progress_bar.Value += 10;
         }
 
         private void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)

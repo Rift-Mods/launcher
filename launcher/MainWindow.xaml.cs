@@ -1,16 +1,7 @@
-﻿using Microsoft.Win32;
-using System;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using static launcher.EngineHandler;
 using static launcher.Updater;
 
 namespace launcher
@@ -38,7 +29,7 @@ namespace launcher
             }
             if (File.Exists("launcher.old"))
                 File.Delete("launcher.old");
-            if(File.Exists("launcher.new"))
+            if (File.Exists("launcher.new"))
                 File.Delete("launcher.new");
             FinishStart();
         }

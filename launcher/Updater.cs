@@ -1,9 +1,6 @@
 ﻿using Octokit;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace launcher
@@ -38,7 +35,7 @@ namespace launcher
                 }
                 UpdaterCheckDone = true;
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Update check failed. Exception" + ex);
             }
