@@ -28,6 +28,16 @@ namespace launcher
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+        }
+        private void HandleProgress(object sender, DownloadProgressChangedEventArgs e)
+        {
+            UpdateBar.Value = e.ProgressPercentage;
+        }
+
+        private async void Confirm_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Question0.Visibility = Visibility.Hidden;
+            Question1.Visibility = Visibility.Hidden;
             WebClient webClient = new WebClient();
             string sourceFile = @"https://github.com/Rift-Mods/launcher/releases/latest/download/launcher.exe";
             string destFile = @"launcher.new";
@@ -37,10 +47,12 @@ namespace launcher
             System.IO.File.Move("launcher.new", "launcher.exe");
             MessageBox.Show("Update completed. Please restart the launcher.");
             Application.Current.Shutdown();
+
         }
-        private void HandleProgress(object sender, DownloadProgressChangedEventArgs e)
+
+        private void Close_Button_Click(object sender, RoutedEventArgs e)
         {
-            UpdateBar.Value = e.ProgressPercentage;
+            Close();
         }
     }
 }
