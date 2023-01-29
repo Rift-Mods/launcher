@@ -17,6 +17,9 @@
             <DataTemplate DataType="{x:Type playView:ModViewModel}">
                 <View:ModView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type playView:SettingsViewModel}">
+                <View:SettingsView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

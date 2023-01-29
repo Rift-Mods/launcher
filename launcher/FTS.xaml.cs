@@ -32,9 +32,7 @@ namespace launcher
             CheckCompletion();
 
         }
-        int i = 0;
-        bool hasDotNet = false;
-        private async void CheckCompletion()
+        private void CheckCompletion()
         {
             progress_bar.Value = 100;
             progress_label.Content = "We're done here!";
@@ -55,7 +53,6 @@ namespace launcher
             client = new WebClient();
             client.DownloadProgressChanged += client_DownloadProgressChanged;
             await client.DownloadFileTaskAsync(new Uri("https://github.com/Rift-Mods/engine/releases/latest/download/engine.exe"), "engine.tmp");
-            i = 0;
         }
         private void CopyEngine()
         {

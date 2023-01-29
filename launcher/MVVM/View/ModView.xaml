@@ -9,7 +9,7 @@
     <Grid>
         <Label Content="Mods" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Quicksand Medium" FontSize="20" Foreground="White"/>
         <StackPanel Margin="199,403,199,38" Orientation="Horizontal" Height="39">
-            <Button Content="Button" Background="#54FFFFFF" Width="84" Height="40">
+            <Button Content="Add" Background="#54FFFFFF" Width="84" Height="40">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" 
@@ -27,7 +27,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Content="Button" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40">
+            <Button Content="Disable" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" 
@@ -45,7 +45,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Content="Button" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40">
+            <Button Content="Remove" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40" Foreground="#FF8A0000">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="border" 

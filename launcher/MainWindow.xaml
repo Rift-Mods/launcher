@@ -76,9 +76,12 @@
                              Foreground="White"
                              Style="{StaticResource MButtonStyle}"
                              FontFamily="{StaticResource Quicksand-Regular}"
-                             FontSize="18"/>
+                             FontSize="18"
+                             Command="{Binding SettingsCommand}"/>
+                <Separator Height="192" Background="{x:Null}" Foreground="{x:Null}" />
+                <Image Source="/Images/IMG_0348.png" VerticalAlignment="Bottom"/>
             </StackPanel>
-            <Label x:Name="credits" Content="ART BY CARBON | GAME BY CARBON AND THE TEAM | LAUNCHER BY BOTCHEDRPR | ENGINE BY NIKKUSS" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" FontSize="12" Margin="61,408,10,10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
+            <Label x:Name="credits" Content="LOGO BY INV*S*BLE | GAME BY CARBON AND THE TEAM | LAUNCHER BY BOTCHEDRPR | ENGINE BY NIKKUSS" Foreground="White" FontFamily="{StaticResource Quicksand-Regular}" Opacity="0.3" FontSize="12" Margin="37,408,10,10" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"/>
             <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
             <Rectangle Grid.ColumnSpan="3" Margin="0,0,0,4" MouseDown="Rectangle_MouseDown" Fill="Transparent"/>
             <Button Grid.Column="2" x:Name="CloseButton" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Quicksand-Regular}" FontSize="18" Click="CloseButton_Click" Style="{StaticResource Frameless}" />

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="launcher.MVVM.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:launcher.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="670">
+    <Grid>
+        <Label Content="Settings" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Quicksand Medium" FontSize="20" Foreground="White"/>
+        <TextBox HorizontalAlignment="Left" x:Name="RiftPath" Margin="90,52,0,0" TextWrapping="Wrap" Text="Double-click to change, click to show" VerticalAlignment="Top" Width="570" Height="21" Background="#4C676767" BorderBrush="#FF5A5A5A" Foreground="White" FontFamily="Quicksand" FontSize="15" MouseDown="TextBox_MouseDown"/>
+        <Label Content="RIFT path" Margin="10,50,592,0" VerticalAlignment="Top" Foreground="White" FontFamily="Quicksand"/>
+        <Button Content="Save" Background="#54FFFFFF" Margin="585,390,10,40" Foreground="White" FontFamily="Quicksand" FontSize="16">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="#7AFFFFFF">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="BorderThickness" Value="2" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#7AFFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>
