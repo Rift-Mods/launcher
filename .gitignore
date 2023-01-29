@@ -129,3 +129,8 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+launcher/obj/project.nuget.cache
+*.cache
+launcher/obj/launcher.csproj.nuget.g.props
+launcher/obj/launcher.csproj.nuget.dgspec.json
+.vs/

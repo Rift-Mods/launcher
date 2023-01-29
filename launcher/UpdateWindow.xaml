@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:launcher"
         mc:Ignorable="d"
-        Title="Launcher update in progress..." SizeToContent="WidthAndHeight" Background="Black" Foreground="White" Loaded="Window_Loaded" Height="90">
-    <Grid Height="62">
-        <Label Content="A new launcher update is available. Updating...&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White" Grid.ColumnSpan="2"/>
+        Title="Launcher update in progress..." SizeToContent="WidthAndHeight" Background="Black" Foreground="White" Loaded="Window_Loaded">
+    <Grid Height="100">
+        <Label Content="A new launcher update is available." HorizontalAlignment="Left" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White" Grid.ColumnSpan="2"/>
         <ProgressBar x:Name="UpdateBar" Height="22" Margin="10,32,10,0" VerticalAlignment="Top" Foreground="#FF009CFF" BorderBrush="Black" Background="#FF050505"/>
-
+        <Button x:Name="Confirm" Margin="46,65,180,10" Content="OK" Click="Confirm_Button_Click"></Button>
+        <Button x:Name="Close" Margin="179,65,47,10" Content="Cancel" Click="Close_Button_Click"/>
+        <Label x:Name="Question0" Content="Would you like to update?" HorizontalAlignment="Center" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White" Margin="0,16,0,0"/>
+        <Label x:Name="Question1"  Content="This may cause incompatibility issues." HorizontalAlignment="Center" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White" Margin="0,32,0,0"/>
     </Grid>
 </Window>
