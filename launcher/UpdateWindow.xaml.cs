@@ -36,8 +36,6 @@ namespace launcher
 
         private async void Confirm_Button_Click(object sender, RoutedEventArgs e)
         {
-            Label Question0 = (Label)this.FindName("Question0");
-            Label Question1 = (Label)this.FindName("Question1");
             Question0.Visibility = Visibility.Hidden;
             Question1.Visibility = Visibility.Hidden;
             WebClient webClient = new WebClient();
