@@ -1,5 +1,7 @@
 ﻿using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace launcher.MVVM.View
@@ -13,23 +15,26 @@ namespace launcher.MVVM.View
         {
             InitializeComponent();
         }
-        UInt16 click = 0;
-        private void TextBox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+
+        private void RiftPath_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            switch (click)
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = Properties.Settings.Default.RiftPath;
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                case 0:
-                    click++;
-                    RiftPath.Text = Properties.Settings.Default.RiftPath;
-                    break;
-                case 1:
-                    click = 0;
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-                    if (openFileDialog.ShowDialog() == true)
-                        Properties.Settings.Default.RiftPath = openFileDialog.FileName;
-                    Properties.Settings.Default.Save();
-                    break;
+                Properties.Settings.Default.RiftPath = dialog.FileName;
             }
+            MainWindow.rift_binarypath = Properties.Settings.Default.RiftPath;
+            if (System.IO.File.Exists(Properties.Settings.Default.RiftPath + @"RIFT.exe"))
+                Properties.Settings.Default.Save();
+            else
+                MessageBox.Show("That's not the right folder. Try again.");
         }
+
+        private void RiftPath_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            RiftPath.Text = MainWindow.rift_binarypath;
+        } 
     }
 }

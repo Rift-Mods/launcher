@@ -16,8 +16,28 @@ namespace launcher
         {
             InitializeComponent();
         }
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
+        }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if(Directory.Exists("Launcher")) //remove old 1.0 struct
+                DeleteDirectory("Launcher");
             progress_label.Content = "Creating directories...";
             CreateDirs();
             progress_label.Content = "Creating files...";
@@ -25,8 +45,6 @@ namespace launcher
             progress_label.Content = "Downloading the modding engine";
             await DownloadEngine();
             CopyEngine();
-            progress_label.Content = "Setting up the mod database";
-            SerializeDB();
             progress_bar.Value = progress_bar.Value + 28;
             progress_label.Content = "Finishing up...";
             CheckCompletion();
@@ -44,22 +62,16 @@ namespace launcher
             Thread.Sleep(1000);
             this.Close();
         }
-        public void SerializeDB()
-        {
-            File.AppendAllText(@"Launcher\mods\mod.db", "");
-        }
         private async Task DownloadEngine()
         {
             client = new WebClient();
             client.DownloadProgressChanged += client_DownloadProgressChanged;
-            await client.DownloadFileTaskAsync(new Uri("https://github.com/Rift-Mods/engine/releases/latest/download/engine.exe"), "engine.tmp");
+            await client.DownloadFileTaskAsync(new Uri("https://github.com/Rift-Mods/engine/releases/latest/download/engine.zip"), "engine.zip");
         }
         private void CopyEngine()
         {
             progress_label.Content = "Copying the modding engine";
-            if (File.Exists(@"Launcher\Engine\engine.exe"))
-                File.Delete(@"Launcher\Engine\engine.exe");
-            File.Copy("engine.tmp", @"Launcher\Engine\engine.exe");
+            System.IO.Compression.ZipFile.ExtractToDirectory("engine.zip", @"Launcher\RIFT");
             progress_bar.Value += 10;
         }
 
@@ -79,15 +91,13 @@ namespace launcher
         {
             Directory.CreateDirectory("Launcher");
             progress_bar.Value++;
-            Directory.CreateDirectory(@"Launcher\mods");
-            progress_bar.Value++;
             Directory.CreateDirectory(@"Launcher\RIFT");
             progress_bar.Value++;
+            Directory.CreateDirectory(@"Launcher\RIFT\RiftModding");
+            progress_bar.Value++;
+            Directory.CreateDirectory(@"Launcher\RIFT\RIFTModding\Mods");
+            progress_bar.Value++;
             Directory.CreateDirectory(@"Launcher\cfg");
-            progress_bar.Value++;
-            Directory.CreateDirectory(@"Launcher\Engine");
-            progress_bar.Value++;
-            Directory.CreateDirectory(@"Launcher\mods\diffs");
             progress_bar.Value++;
         }
     }

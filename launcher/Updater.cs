@@ -31,7 +31,7 @@ namespace launcher
                 }
                 else if (versionComparison > 0)
                 {
-                    MessageBox.Show("You are running a BETA release.\n Hic sunt dracones.");
+                    MessageBox.Show("You are running a beta release.\nHic sunt dracones.");
                 }
                 UpdaterCheckDone = true;
             }

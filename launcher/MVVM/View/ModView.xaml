@@ -6,10 +6,39 @@
              xmlns:local="clr-namespace:launcher.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="670">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UserControl.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <ThicknessAnimation Storyboard.TargetName="modLabel" Storyboard.TargetProperty="(Label.Margin)"
+                     From="0,-58,0,0" To="0,5,0,0"
+                     Duration="0:0:0.2">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="listBox" Storyboard.TargetProperty="(ListBox.Margin)"
+                     From="10,45,659,429" To="10,45,10,86"
+                     Duration="0:0:0.6">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="buttonPanel" Storyboard.TargetProperty="(StackPanel.Margin)"
+                     From="198,403,471,73" To="199,403,199,38"
+                     Duration="0:0:0.4">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <Grid>
-        <Label Content="Mods" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Quicksand Medium" FontSize="20" Foreground="White"/>
-        <StackPanel Margin="199,403,199,38" Orientation="Horizontal" Height="39">
-            <Button Content="Add" Background="#54FFFFFF" Width="84" Height="40">
+        <Label x:Name="modLabel" Content="Mods" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Quicksand Medium" FontSize="20" Foreground="White"/>
+        <StackPanel Margin="199,403,199,38" Orientation="Horizontal" Height="39" x:Name="buttonPanel">
+            <Button Content="Add" Background="#54FFFFFF" Width="84" Height="40" Click="Button_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" 
@@ -27,7 +56,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Content="Disable" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40">
+            <Button Content="Toggle Disable" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40" Click="Button_Click_1">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" 
@@ -45,7 +74,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Content="Remove" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40" Foreground="#FF8A0000">
+            <Button Content="Remove" Background="#54FFFFFF" Margin="10,0,0,0" Width="84" Height="40" Foreground="#FF8A0000" Click="Button_Click_2">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border x:Name="border" 
@@ -64,7 +93,7 @@
                 </Button.Template>
             </Button>
         </StackPanel>
-        <ListBox Margin="10,45,10,86" Background="#66000000" Foreground="#FFE0E0E0"/>
+        <ListBox x:Name="listBox" Margin="10,45,10,86" Background="#66000000" Foreground="#FFE0E0E0" FontFamily="Quicksand" FontSize="16"/>
 
     </Grid>
 </UserControl>

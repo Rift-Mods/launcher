@@ -11,15 +11,13 @@ namespace launcher
     /// </summary>
     public partial class MainWindow : Window
     {
-        bool[] buttonsEnabled = new bool[4];
-        public static string rift_binarypath = @"Launcher\RIFT\RIFT.exe"; //load this from app.settings later
+        public static string rift_binarypath = Properties.Settings.Default.RiftPath;
         public MainWindow()
         {
             InitializeComponent();
             this.Visibility = Visibility.Hidden;
-            if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN")
+            if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN" && !Directory.Exists("Launcher\\Engine"))
             {
-                buttonsEnabled[0] = true; //enable play button as default
                 this.Visibility = Visibility.Visible;
             }
             else
@@ -35,13 +33,20 @@ namespace launcher
         }
         private async void FinishStart()
         {
-            CheckForUpdate();
-            while (!UpdaterCheckDone)
+            if (UpdaterCheckDone)
             {
-                await Task.Delay(25);
+
             }
-            if (UpdateAvailable == true)
-                this.Visibility = Visibility.Hidden;
+            else
+            {
+                CheckForUpdate();
+                while (!UpdaterCheckDone)
+                {
+                    await Task.Delay(25);
+                }
+                if (UpdateAvailable == true)
+                    this.Visibility = Visibility.Hidden;
+            }
             if (Updater.Version != "")
                 verLabel.Content += Updater.Version;
             else

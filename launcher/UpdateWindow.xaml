@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:launcher"
         mc:Ignorable="d"
-        Title="Launcher update in progress..." SizeToContent="WidthAndHeight" Background="Black" Foreground="White" Loaded="Window_Loaded" Height="90">
-    <Grid Height="62">
-        <Label Content="A new launcher update is available. Updating...&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="349" HorizontalContentAlignment="Center" Height="27" Foreground="White" Grid.ColumnSpan="2"/>
-        <ProgressBar x:Name="UpdateBar" Height="22" Margin="10,32,10,0" VerticalAlignment="Top" Foreground="#FF009CFF" BorderBrush="Black" Background="#FF050505"/>
+        Title="Launcher update in progress..." SizeToContent="WidthAndHeight" Background="Black" Foreground="White" Loaded="Window_Loaded" Height="507" Width="667">
+    <Grid>
+        <Label Content="A new launcher update is available. Would you like to update?" HorizontalAlignment="Center" VerticalAlignment="Top" Width="609" HorizontalContentAlignment="Center" Height="38" Foreground="White" FontFamily="Quicksand" FontSize="16" Margin="0,5,0,0"/>
+        <ProgressBar x:Name="UpdateBar" Height="22" Margin="10,421,10,0" VerticalAlignment="Top" Foreground="#FF009CFF" BorderBrush="Black" Background="#FF050505"/>
+        <TextBlock x:Name="changelogBlock" HorizontalAlignment="Center" Margin="0,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="376" Width="647" FontSize="14" Background="#FF131313"/>
+        <Button Content="Update" HorizontalAlignment="Left" Margin="17,448,0,0" VerticalAlignment="Top" Height="33" Width="307" Background="#FF3E3E3E" Foreground="White" BorderBrush="{x:Null}" Click="Button_Click"/>
+        <Button Content="Nah thanks" HorizontalAlignment="Left" Margin="339,448,0,0" VerticalAlignment="Top" Height="33" Width="318" Background="#FF3E3E3E" Foreground="White" BorderBrush="{x:Null}" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

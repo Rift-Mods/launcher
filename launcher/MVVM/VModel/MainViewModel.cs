@@ -1,4 +1,8 @@
 ﻿using launcher.LauncherUI;
+using launcher.MVVM.View;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace launcher.MVVM.VModel
 {
@@ -28,6 +32,7 @@ namespace launcher.MVVM.VModel
             PlayVM = new PlayViewModel();
             ModVM = new ModViewModel();
             SettingsVM = new SettingsViewModel();
+            SettingsView sv = new SettingsView();
             CurrentView = PlayVM;
 
             MainCommand = new RCommand(o =>

@@ -6,11 +6,54 @@
              xmlns:local="clr-namespace:launcher.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="670">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UserControl.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="RPath_Label" Storyboard.TargetProperty="(Label.Opacity)"
+                                     From="0" To="100"
+                                     Duration="0:0:0.2"/>
+                    <ThicknessAnimation Storyboard.TargetName="RPath_Label" Storyboard.TargetProperty="(Label.Margin)"
+                     From="-81,50,683,0" To="10,50,592,0"
+                     Duration="0:0:0.2">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="Settings" Storyboard.TargetProperty="(Label.Margin)"
+                     From="0,-59,0,0" To="0,5,0,0"
+                     Duration="0:0:0.3">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                    <DoubleAnimation Storyboard.TargetName="RiftPath" Storyboard.TargetProperty="(TextBox.Width)"
+                     From="0" To="570"
+                     Duration="0:0:0.5">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="saveBtn" Storyboard.TargetProperty="(Button.Margin)"
+                     From="657,438,10,39" To="590,371,10,39"
+                     Duration="0:0:0.4">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <Grid>
-        <Label Content="Settings" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" FontFamily="Quicksand Medium" FontSize="20" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" x:Name="RiftPath" Margin="90,52,0,0" TextWrapping="Wrap" Text="Double-click to change, click to show" VerticalAlignment="Top" Width="570" Height="21" Background="#4C676767" BorderBrush="#FF5A5A5A" Foreground="White" FontFamily="Quicksand" FontSize="15" MouseDown="TextBox_MouseDown"/>
-        <Label Content="RIFT path" Margin="10,50,592,0" VerticalAlignment="Top" Foreground="White" FontFamily="Quicksand"/>
-        <Button Content="Save" Background="#54FFFFFF" Margin="585,390,10,40" Foreground="White" FontFamily="Quicksand" FontSize="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="319*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Settings" Content="Settings" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Quicksand Medium" FontSize="20" Foreground="White" Margin="0,5,0,0"/>
+        <TextBox HorizontalAlignment="Left" x:Name="RiftPath" Margin="90,52,0,0" TextWrapping="Wrap" Text="Double-click to change, click to show" VerticalAlignment="Top" Width="570" Height="21" Background="#4C676767" BorderBrush="#FF5A5A5A" Foreground="White" FontFamily="Quicksand" FontSize="15" MouseDoubleClick="RiftPath_MouseDoubleClick" PreviewMouseDown="RiftPath_MouseLeftButtonDown"/>
+        <Label Content="RIFT path" Margin="10,50,592,0" x:Name="RPath_Label" VerticalAlignment="Top" Foreground="White" FontFamily="Quicksand" Opacity="100">
+        </Label>
+        <Button x:Name="saveBtn" Content="Save" Background="#54FFFFFF" Margin="590,371,10,39" Foreground="White" FontFamily="Quicksand" FontSize="16" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border" 
@@ -28,5 +71,6 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Label Content="empty space!!! yay" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White" Margin="0,222,0,0"/>
     </Grid>
 </UserControl>

@@ -6,13 +6,37 @@
              xmlns:local="clr-namespace:launcher.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UserControl.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="riftImage" Storyboard.TargetProperty="(Image.Height)"
+                     From="0" To="240"
+                     Duration="0:0:0.5">
+                        <DoubleAnimation.EasingFunction>
+                            <CubicEase/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="playBtn" Storyboard.TargetProperty="(Button.Margin)"
+                     From="0,391,0,0" To="0,325,0,0"
+                     Duration="0:0:0.4">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                    <ThicknessAnimation Storyboard.TargetName="ModCheck" Storyboard.TargetProperty="(CheckBox.Margin)"
+                     From="0,458,0,0" To="0,396,0,0"
+                     Duration="0:0:0.3">
+                        <ThicknessAnimation.EasingFunction>
+                            <CubicEase/>
+                        </ThicknessAnimation.EasingFunction>
+                    </ThicknessAnimation>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <Grid>
-        <Image Source="/Images/background.jpg" Opacity=".7" Margin="0,0,0,2" Stretch="Fill">
-            <Image.Effect>
-                <BlurEffect Radius="50"/>
-            </Image.Effect>
-        </Image>
-        <Button Content="Play RIFT" FontFamily="{StaticResource Quicksand-Regular}" FontSize="20" Margin="0,325,0,0" Background="#54FFFFFF" HorizontalAlignment="Center" Width="180" Height="66" VerticalAlignment="Top">
+        <Button x:Name="playBtn" Content="Play RIFT" FontFamily="{StaticResource Quicksand-Regular}" FontSize="20" Margin="0,325,0,0" Background="#54FFFFFF" HorizontalAlignment="Center" Width="180" Height="66" VerticalAlignment="Top" Click="playBtn_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Name="border" 
@@ -30,8 +54,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Image Source="..\..\Images/RiftClear2.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,10,0,0" HorizontalAlignment="Center" Width="240" Height="240" VerticalAlignment="Top"/>
-        <CheckBox Content="Mods disabled" FontFamily="{StaticResource Quicksand-Regular}" HorizontalAlignment="Center" Margin="0,396,0,0" VerticalAlignment="Top" Foreground="#CC000000" Background="#66FFFFFF"/>
-        <Rectangle HorizontalAlignment="Left" Height="24" Margin="766,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="24" />
+        <Image x:Name="riftImage" Source="..\..\Images/RiftClear2.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,10,0,0" HorizontalAlignment="Center" Width="240" Height="240" VerticalAlignment="Top"/>
+        <CheckBox x:Name="ModCheck" Content="Mods disabled" FontFamily="{StaticResource Quicksand-Regular}" HorizontalAlignment="Center" Margin="0,396,0,0" VerticalAlignment="Top" Foreground="#CC000000" Background="#66FFFFFF" Checked="ModCheck_Checked" Unchecked="ModCheck_Unchecked"/>
     </Grid>
 </UserControl>

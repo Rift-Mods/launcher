@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="RiftPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Launcher\RIFT</Value>
     </Setting>
   </Settings>
 </SettingsFile>
