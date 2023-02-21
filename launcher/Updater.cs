@@ -9,7 +9,7 @@ namespace launcher
     {
         public static bool UpdateAvailable = false;
         public static bool UpdaterCheckDone = false;
-        public static string Version = "2.0.0";
+        public static string Version = "2.1.0";
         public static async void CheckForUpdate()
         {
             try

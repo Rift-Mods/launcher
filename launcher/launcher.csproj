@@ -5,7 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>IMG_0348.ico</ApplicationIcon>
+    <ApplicationIcon>rift.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="IMG_0348.ico" />
+    <Content Include="rift.ico" />
   </ItemGroup>
 
   <ItemGroup>
