@@ -35,7 +35,7 @@
                         </DoubleAnimation.EasingFunction>
                     </DoubleAnimation>
                     <ThicknessAnimation Storyboard.TargetName="saveBtn" Storyboard.TargetProperty="(Button.Margin)"
-                     From="657,438,10,39" To="590,371,10,39"
+                     From="-502,84,948,362" To="223,78,223,369"
                      Duration="0:0:0.4">
                         <ThicknessAnimation.EasingFunction>
                             <CubicEase/>
@@ -53,7 +53,7 @@
         <TextBox HorizontalAlignment="Left" x:Name="RiftPath" Margin="90,52,0,0" TextWrapping="Wrap" Text="Double-click to change, click to show" VerticalAlignment="Top" Width="570" Height="21" Background="#4C676767" BorderBrush="#FF5A5A5A" Foreground="White" FontFamily="Quicksand" FontSize="15" MouseDoubleClick="RiftPath_MouseDoubleClick" PreviewMouseDown="RiftPath_MouseLeftButtonDown"/>
         <Label Content="RIFT path" Margin="10,50,592,0" x:Name="RPath_Label" VerticalAlignment="Top" Foreground="White" FontFamily="Quicksand" Opacity="100">
         </Label>
-        <Button x:Name="saveBtn" Content="Save" Background="#54FFFFFF" Margin="590,371,10,39" Foreground="White" FontFamily="Quicksand" FontSize="16" >
+        <Button x:Name="saveBtn" Content="Regenerate desktop shortcuts" Background="#54FFFFFF" Margin="223,78,223,369" Foreground="Black" FontFamily="Quicksand" FontSize="16" Click="saveBtn_Click" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="border" 
@@ -71,6 +71,5 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Label Content="empty space!!! yay" HorizontalAlignment="Center" VerticalAlignment="Top" Background="White" Margin="0,222,0,0"/>
     </Grid>
 </UserControl>

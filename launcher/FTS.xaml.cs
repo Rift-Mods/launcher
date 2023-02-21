@@ -4,10 +4,12 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using IWshRuntimeLibrary;
 namespace launcher
 {
     /// <summary>
     /// Interaction logic for FTS.xaml
+    /// I hate this stuff so much. I need to rewrite it soon
     /// </summary>
     public partial class FTS : Window
     {
@@ -23,8 +25,8 @@ namespace launcher
 
             foreach (string file in files)
             {
-                File.SetAttributes(file, FileAttributes.Normal);
-                File.Delete(file);
+                System.IO.File.SetAttributes(file, FileAttributes.Normal);
+                System.IO.File.Delete(file);
             }
 
             foreach (string dir in dirs)
@@ -47,15 +49,37 @@ namespace launcher
             CopyEngine();
             progress_bar.Value = progress_bar.Value + 28;
             progress_label.Content = "Finishing up...";
+            MessageBoxResult mbr = MessageBox.Show("Would you like to create desktop icons for launching RIFT?", "Launcher First-Time Setup", MessageBoxButton.YesNo);
+            if (mbr == MessageBoxResult.Yes)
+                CreateShortcuts();
             CheckCompletion();
+        }
 
+        public void CreateShortcuts()
+        {
+            object shDesktop = (object)"Desktop";
+            WshShell shell = new WshShell();
+            string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\RIFT (with mods).lnk";
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+            shortcut.Description = "Launch the French game using the unofficial Launcher";
+            shortcut.TargetPath = AppDomain.CurrentDomain.BaseDirectory + "launcher.exe";
+            shortcut.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            shortcut.Arguments = "-play -mods on";
+            shortcut.Save();
+            shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\RIFT (without mods).lnk";
+            IWshShortcut shortcut2 = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+            shortcut2.Description = "Launch the French game using the unofficial Launcher (no fun)";
+            shortcut2.TargetPath = AppDomain.CurrentDomain.BaseDirectory + "launcher.exe";
+            shortcut2.Arguments = "-play -mods off";
+            shortcut2.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            shortcut2.Save();
         }
         private void CheckCompletion()
         {
             progress_bar.Value = 100;
             progress_label.Content = "We're done here!";
             MessageBox.Show("Hey there and thanks for downloading the launcher! We've been hard at work to make it work, so if you encounter any bugs feel free to reach out on: \nDiscord: BotchedRPR#1282\nGitHub: BotchedRPR\nWe hope that you enjoy using the launcher. Don't forget to copy your RIFT game files to the now created Launcher/RIFT folder.\nOnce again thanks for downloading, and we hope you'll enjoy using it!\n -BotchedRPR and Nikkuss");
-            File.WriteAllText(@"Launcher\cfg\fts.cfg", "FN");
+            System.IO.File.WriteAllText(@"Launcher\cfg\launcher.cfg", "FN");
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Hide();
@@ -81,9 +105,9 @@ namespace launcher
         }
         private void CreateFiles()
         {
-            File.WriteAllText(@"Launcher\cfg\fts.cfg", "NF");
+            System.IO.File.WriteAllText(@"Launcher\cfg\launcher.cfg", "NF");
             progress_bar.Value++;
-            File.AppendAllText(@"Launcher\Log.log", "FTS begin log" + Environment.NewLine);
+            System.IO.File.AppendAllText(@"Launcher\Log.log", "FTS begin log" + Environment.NewLine);
             progress_bar.Value++;
         }
 

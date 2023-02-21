@@ -19,10 +19,10 @@ namespace launcher
         public MainWindow()
         {
             InitializeComponent();
-            StartupLogic();
             this.Visibility = Visibility.Hidden;
-            if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN" && !Directory.Exists("Launcher\\Engine"))
+            if (File.Exists(@"Launcher\cfg\launcher.cfg") && File.ReadAllText(@"Launcher\cfg\launcher.cfg") == "FN" && !Directory.Exists("Launcher\\Engine"))
             {
+                StartupLogic();
                 this.Visibility = Visibility.Visible;
             }
             else
@@ -41,7 +41,7 @@ namespace launcher
         {
             /* Check for shortcut/other program start command (to skip pressing the button in UI) */
             string[] args = Environment.GetCommandLineArgs(); // Get command line args
-            if (args.Length != 0) //Something is passed, check it before showing UI
+            if (args.Length != 1) //Something is passed, check it before showing UI
             {
                 if (args.Contains("-play") && !args.Contains("-mods"))
                 {
@@ -59,19 +59,20 @@ namespace launcher
                     }
                     PlayView.ModsDisabled = false;
                     StartGame();
+                    Application.Current.Shutdown();
                 }
                 else if (args.Contains("-play") && args.Contains("-mods") && args.Contains("off"))
                 {
                     DirectoryInfo d = new DirectoryInfo(Properties.Settings.Default.RiftPath + @"\RiftModding\Mods\");
 
                     FileInfo[] Files = d.GetFiles("*.*");
-
                     foreach (FileInfo file in Files)
                     {
                         file.MoveTo(file.FullName + ".temp.disabled");
                     }
                     PlayView.ModsDisabled = true;
                     StartGame();
+                    Application.Current.Shutdown();
                 }
                 else
                 {

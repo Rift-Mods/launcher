@@ -35,6 +35,12 @@ namespace launcher.MVVM.View
         private void RiftPath_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             RiftPath.Text = MainWindow.rift_binarypath;
-        } 
+        }
+
+        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            FTS fts = new FTS();
+            fts.CreateShortcuts();
+        }
     }
 }

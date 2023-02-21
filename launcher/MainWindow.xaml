@@ -54,7 +54,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="37*"/>
             </Grid.RowDefinitions>
-            <Image Source="/Images/background.jpg" Opacity=".7" Stretch="Fill" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="88,0,0,0">
+            <Image Source="/Images/background.jpg" Opacity=".7" Stretch="Fill" Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="102,0,0,0">
                 <Image.Effect>
                     <BlurEffect Radius="50"/>
                 </Image.Effect>
