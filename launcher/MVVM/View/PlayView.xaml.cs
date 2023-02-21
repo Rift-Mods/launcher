@@ -9,7 +9,7 @@ namespace launcher.MVVM.View
     /// </summary>
     public partial class PlayView : UserControl
     {
-        public bool ModsDisabled = false;
+        public static bool ModsDisabled = false;
         public PlayView()
         {
             InitializeComponent();

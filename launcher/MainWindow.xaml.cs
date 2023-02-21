@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿using launcher.MVVM.View;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -15,6 +19,7 @@ namespace launcher
         public MainWindow()
         {
             InitializeComponent();
+            StartupLogic();
             this.Visibility = Visibility.Hidden;
             if (File.Exists(@"Launcher\cfg\fts.cfg") && File.ReadAllText(@"Launcher\cfg\fts.cfg") == "FN" && !Directory.Exists("Launcher\\Engine"))
             {
@@ -30,6 +35,57 @@ namespace launcher
             if (File.Exists("launcher.new"))
                 File.Delete("launcher.new");
             FinishStart();
+        }
+
+        private void StartupLogic()
+        {
+            /* Check for shortcut/other program start command (to skip pressing the button in UI) */
+            string[] args = Environment.GetCommandLineArgs(); // Get command line args
+            if (args.Length != 0) //Something is passed, check it before showing UI
+            {
+                if (args.Contains("-play") && !args.Contains("-mods"))
+                {
+                    StartGame();
+                }
+                else if (args.Contains("-play") && args.Contains("-mods") && args.Contains("on"))
+                {
+                    DirectoryInfo d = new DirectoryInfo(Properties.Settings.Default.RiftPath + @"\RiftModding\Mods\");
+
+                    FileInfo[] Files = d.GetFiles("*.temp.disabled");
+
+                    foreach (FileInfo file in Files)
+                    {
+                        file.MoveTo(file.FullName.Replace(".temp.disabled", ""));
+                    }
+                    PlayView.ModsDisabled = false;
+                    StartGame();
+                }
+                else if (args.Contains("-play") && args.Contains("-mods") && args.Contains("off"))
+                {
+                    DirectoryInfo d = new DirectoryInfo(Properties.Settings.Default.RiftPath + @"\RiftModding\Mods\");
+
+                    FileInfo[] Files = d.GetFiles("*.*");
+
+                    foreach (FileInfo file in Files)
+                    {
+                        file.MoveTo(file.FullName + ".temp.disabled");
+                    }
+                    PlayView.ModsDisabled = true;
+                    StartGame();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid usage.\nStart RIFT, using the last mod settings:\nlauncher.exe -play\n\nStart RIFT, with mods:\nlauncher.exe -play -mods on\n\nStart RIFT, without mods\nlauncher.exe -play -mods off\n\nStart the launcher\nlauncher.exe");
+                }
+            }
+        }
+
+        private void StartGame()
+        {
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.FileName = Properties.Settings.Default.RiftPath + "\\RIFT.exe";
+            psi.WorkingDirectory = Properties.Settings.Default.RiftPath;
+            Process.Start(psi);
         }
         private async void FinishStart()
         {
@@ -53,10 +109,6 @@ namespace launcher
                 MessageBox.Show("Failed to get current version. Something is really messed up.");
         }
 
-        private void lbl_settings_Copy_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
 
         private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
         {
